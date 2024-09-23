@@ -1,4 +1,5 @@
 # PB Introduction to R short course
+
 <img src="figs/PBlogo.png" alt="PB logo" width="200" style="float: right;"/>
 
 Tutors

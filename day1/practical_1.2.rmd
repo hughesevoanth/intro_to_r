@@ -1,7 +1,7 @@
 ---
-title: "Introduction to R Practical Solutions"
-author: "Bristol MRC-IEU"
-date: "Nov 11, 2022"
+title: "Introduction to R: practical 1.2"
+author: "PBRC: DA Hughes"
+date: "Oct 9th, 2024"
 output: html_document
 ---
 

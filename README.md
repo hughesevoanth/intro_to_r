@@ -43,10 +43,10 @@ By the end of the course students will be able to:
 	
 |Date|Session |Time | Presenter & Tutors|
 |--------|--------|-------|-------|
-| Oct 9th, 2024 | (1) Introduction to R part 1 -  the basics [web](https://github.com/hughesevoanth/intro_to_r/blob/main/day1/intro_part1.html)| 0900-1030 | David Hughes |
-| | &nbsp;&nbsp;&nbsp;&nbsp; Practical 1  <br> &nbsp;&nbsp;&nbsp;&nbsp; working with vectors, matrixes, data frames, and lists| 1045-1145 | David, Vance & others|
-|Oct 9th, 2024| (2) Introduction to R part 2  - wrangling, loops, and apply | 1300 - 1430 | David Hughes|
-||&nbsp;&nbsp;&nbsp;&nbsp; Practical 2  <br> &nbsp;&nbsp;&nbsp;&nbsp; reading in your data, basic data wrangling, loops, and the apply() function | 1430 - 1530 | David, Vance & others|
+| Oct 9th, 2024 | (1) Introduction to R part 1 -  the basics [web](https://hughesevoanth.github.io/intro_to_r/day1/intro_part1.html)| 0900-1030 | David Hughes |
+| | &nbsp;&nbsp;&nbsp;&nbsp; Practical 1  <br> &nbsp;&nbsp;&nbsp;&nbsp; working with vectors, matrixes, data frames, and lists [practical 1.1](https://hughesevoanth.github.io/intro_to_r/day1/practical_1.1.html) [solutions 1.1](https://hughesevoanth.github.io/intro_to_r/day1/solutions_1.1.html)| 1045-1145 | David, Vance & others|
+|Oct 9th, 2024| (2) Introduction to R part 2  - wrangling, loops, and apply [web](https://hughesevoanth.github.io/intro_to_r/day1/intro_part2.html) | 1300 - 1430 | David Hughes|
+||&nbsp;&nbsp;&nbsp;&nbsp; Practical 2  <br> &nbsp;&nbsp;&nbsp;&nbsp; reading in your data, basic data wrangling [practical 1.2](https://hughesevoanth.github.io/intro_to_r/day1/practical_1.2.html) [solutions 1.2](https://hughesevoanth.github.io/intro_to_r/day1/solutions_1.2.html)| 1430 - 1530 | David, Vance & others|
 |Oct 16th, 2024| (3) Introduction to plots (base R)| 0900-1000|David Hughes|
 ||Practical 3 <br> &nbsp;&nbsp;&nbsp;&nbsp; read in some data and make some summary plots|1015-10:45|David, Rodrigo & others|
 |Oct 16th, 2024| (4) Writing scripts |1045-1145| David Hughes|

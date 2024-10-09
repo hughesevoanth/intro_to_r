@@ -1,6 +1,6 @@
 # PB Introduction to R short course
 
-<img src="figs/PBlogo.png" alt="PB logo" width="200" style="float: right;"/>
+<img src="images/PBRC_purple.png" alt="PB logo" width="200" style="float: right;"/>
 
 Tutors
 
@@ -43,7 +43,7 @@ By the end of the course students will be able to:
 	
 |Date|Session |Time | Presenter & Tutors|
 |--------|--------|-------|-------|
-| Oct 9th, 2024 | (1) Introduction to R part 1 -  the basics | 0900-1030 | David Hughes |
+| Oct 9th, 2024 | (1) Introduction to R part 1 -  the basics [web](https://github.com/hughesevoanth/intro_to_r/blob/main/day1/intro_part1.html)| 0900-1030 | David Hughes |
 | | &nbsp;&nbsp;&nbsp;&nbsp; Practical 1  <br> &nbsp;&nbsp;&nbsp;&nbsp; working with vectors, matrixes, data frames, and lists| 1045-1145 | David, Vance & others|
 |Oct 9th, 2024| (2) Introduction to R part 2  - wrangling, loops, and apply | 1300 - 1430 | David Hughes|
 ||&nbsp;&nbsp;&nbsp;&nbsp; Practical 2  <br> &nbsp;&nbsp;&nbsp;&nbsp; reading in your data, basic data wrangling, loops, and the apply() function | 1430 - 1530 | David, Vance & others|

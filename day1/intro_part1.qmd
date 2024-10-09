@@ -42,11 +42,9 @@ library(tidyverse)
 
 ## Getting Started
 
-<br> 
-![](https://www.r-project.org/Rlogo.png)
+<br> ![](https://www.r-project.org/Rlogo.png)
 
-- https://www.r-project.org
-<br> <br>
+-   https://www.r-project.org <br> <br>
 
 <hr>
 
@@ -54,135 +52,120 @@ what, why, downloading, opening, using, terminal, rstudio, help, errors
 
 ## Getting Started {.smaller}
 
-- R is a statistical programming language (based on S)
-- R is open source - researchers develop packages to implement new statistical methods, plots or applications
-- R runs on Windows, MacOS and UNIX
-<hr>
+-   R is a statistical programming language (based on S)
 
-::::: columns
+-   R is open source - researchers develop packages to implement new statistical methods, plots or applications
+
+-   R runs on Windows, MacOS and UNIX
+
+    <hr>
+
+:::::: columns
 ::: {.column width="33%"}
-![John Chambers, creator of S]( https://datascience.stanford.edu/sites/g/files/sbiybj25376/files/styles/medium_square/public/media/image/john-chambers_0.png?h=78b7a964&itok=8v_bN9yZ ){width=50%}
-
-
+![John Chambers, creator of S](https://datascience.stanford.edu/sites/g/files/sbiybj25376/files/styles/medium_square/public/media/image/john-chambers_0.png?h=78b7a964&itok=8v_bN9yZ){width="50%"}
 :::
 
 ::: {.column width="33%"}
-![Ross Ihaka, co-originator of R](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Ross_Ihaka_%285189180796%29.jpg/440px-Ross_Ihaka_%285189180796%29.jpg){width=70%}
+![Ross Ihaka, co-originator of R](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Ross_Ihaka_%285189180796%29.jpg/440px-Ross_Ihaka_%285189180796%29.jpg){width="70%"}
 :::
 
 ::: {.column width="33%"}
-![Robert Gentleman, co-originator of R](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Robert_Gentleman_on_R_Consortium.jpg/340px-Robert_Gentleman_on_R_Consortium.jpg){width=40%}
+![Robert Gentleman, co-originator of R](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Robert_Gentleman_on_R_Consortium.jpg/340px-Robert_Gentleman_on_R_Consortium.jpg){width="40%"}
 :::
+::::::
 
-:::::
+## Getting Started: Why? {.smaller}
 
-## Getting Started: Why?{.smaller}
+<br> ... rather than S, STATA, SPSS, excel, etc
+
 <br>
-... rather than S, STATA, SPSS, excel, etc
 
-<br>
+-   R is free!
+-   R is flexible
+-   R is good at handling small and large data sets and multiple objects
+-   R has good plotting tools and packages for statistical analysis
+-   R is **reproducible**
+    -   It can be version controlled and shared
 
-- R is free!
-- R is flexible
-- R is good at handling small and large data sets and multiple objects
-- R has good plotting tools and packages for statistical analysis
-- R is **reproducible** 
-  - It can be version controlled and shared
+## Getting Started: Installing {.smaller}
 
-
-## Getting Started: Installing{.smaller}
-
-- Visit [https://www.r-project.org](https://www.r-project.org) and click [download R](https://cran.r-project.org/mirrors.html)
-- Choose your nearest CRAN mirror (such as [https://archive.linux.duke.edu/cran/](https://archive.linux.duke.edu/cran/))
-- Choose "Download R for [Windows/Mac/Linux]"
-- Current release is R 4.4.1 "Race for Your Life" released on 2024/06/14
-  - Older versions are available in the archive
-- Once the .exe (Windows) or .pkg (Mac) have downloaded, run and install
+-   Visit <https://www.r-project.org> and click [download R](https://cran.r-project.org/mirrors.html)
+-   Choose your nearest CRAN mirror (such as <https://archive.linux.duke.edu/cran/>)
+-   Choose "Download R for \[Windows/Mac/Linux\]"
+-   Current release is R 4.4.1 "Race for Your Life" released on 2024/06/14
+    -   Older versions are available in the archive
+-   Once the .exe (Windows) or .pkg (Mac) have downloaded, run and install
 
 ## Getting Started: Open the R Console (GUI) {.scrollable .smaller}
 
 <br> <br>
 
-::::: columns
+:::::: columns
 ::: {.column width="15%"}
-![](https://www.r-project.org/Rlogo.png){width=100%}
+![](https://www.r-project.org/Rlogo.png){width="100%"}
 :::
 
-:::{.column width="40%"}
-
-![](../images/RConsole.png){width=30%}
-
+::: {.column width="40%"}
+![](../images/RConsole.png){width="80%"}
 :::
 
-:::{.column width="45%"}
-
-- The R console initially just shows information on the version of R running, how to get help and how to quit
-- At the bottom of the console is the R command line where you can tell R what to do
-- Drop-down menus are available to open text editor to write scripts
-
+::: {.column width="45%"}
+-   The R console initially just shows information on the version of R running, how to get help and how to quit
+-   At the bottom of the console is the R command line where you can tell R what to do
+-   Drop-down menus are available to open text editor to write scripts
 :::
-
-::::
-
-
+::::::
 
 ## Getting Started: Rstudio {.scrollable .smaller}
 
-<br>
-<br>
+<br> <br>
 
 ::::: columns
-
-:::{.column width="50%"}
+::: {.column width="50%"}
 ![](https://bookdown.org/einavg7/sp_technical_guide/images/rstudio_logo.png){style="background-color: white; padding: 10px;"}
 :::
 
-:::{.column width="50%"}
-
+::: {.column width="50%"}
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Posit_logo.svg/1024px-Posit_logo.svg.png){style="background-color: white; padding: 10px;"}
 
-  - RStudio is managed by Posit
+-   RStudio is managed by Posit
 :::
-
-::::
+:::::
 
 ## Getting Started: Rstudio (cont'd) {.scrollable .smaller}
 
-::::: columns
-:::{.column width="30%"}
+:::::: columns
+::: {.column width="30%"}
 <br>
 
-- RStudio makes R easier to use
-- It includes a code editor, debugging & visualization tools
-- [https://posit.co](https://posit.co)
-- RStudio User Guide can be found [here](https://docs.posit.co/ide/user/)
+-   RStudio makes R easier to use
+-   It includes a code editor, debugging & visualization tools
+-   <https://posit.co>
+-   RStudio User Guide can be found [here](https://docs.posit.co/ide/user/)
 :::
-:::{.column width="70%"}
-<div style="text-align: center;">
-![](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg){width="90%"}
-</div>
 
+:::: {.column width="70%"}
+::: {style="text-align: center;"}
+![](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg){width="90%"}
 :::
 ::::
-
+::::::
 
 ## Getting Started: script {.scrollable .smaller}
 
-The "Source" section is where you will find your space to write scripts.
-<br>
+The "Source" section is where you will find your space to write scripts. <br>
 
-<div style="text-align: center;">
+::: {style="text-align: center;"}
 ![](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg){width="90%"}
-</div>
-
+:::
 
 ## Getting Started: help {.scrollable .smaller}
 
-The "Help" tab will provide a print out of the manual file or help file on R functions. 
+The "Help" tab will provide a print out of the manual file or help file on R functions.
 
-<div style="text-align: center;">
+::: {style="text-align: center;"}
 ![](../images/help_window.png){width="50%"}
-</div>
+:::
 
 ## Getting Started: help(mean) or ?mean() {.scrollable .smaller}
 
@@ -191,40 +174,46 @@ The "Help" tab will provide a print out of the manual file or help file on R fun
 mean {base}
 
 ### Arithmetic Mean
+
 #### Description
+
 Generic function for the (trimmed) arithmetic mean.
 
 #### Usage
+
 mean(x, ...)
 
-Default S3 method:
-mean(x, trim = 0, na.rm = FALSE, ...)
+Default S3 method: mean(x, trim = 0, na.rm = FALSE, ...)
 
 #### Arguments
-x	
+
+x\
 An R object. Currently there are methods for numeric/logical vectors and date, date-time and time interval objects. Complex vectors are allowed for trim = 0, only.
 
-trim	
+trim\
 the fraction (0 to 0.5) of observations to be trimmed from each end of x before the mean is computed. Values of trim outside that range are taken as the nearest endpoint.
 
-na.rm	
+na.rm\
 a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds.
 
-...	
-further arguments passed to or from other methods.
+... further arguments passed to or from other methods.
 
 #### Value
-If trim is zero (the default), the arithmetic mean of the values in x is computed, as a numeric or complex vector of length one. If x is not logical (coerced to numeric), numeric (including integer) or complex, NA_real_ is returned, with a warning.
+
+If trim is zero (the default), the arithmetic mean of the values in x is computed, as a numeric or complex vector of length one. If x is not logical (coerced to numeric), numeric (including integer) or complex, NA_real\_ is returned, with a warning.
 
 If trim is non-zero, a symmetrically trimmed mean is computed with a fraction of trim observations deleted from each end before the mean is computed.
 
 #### References
+
 Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) The New S Language. Wadsworth & Brooks/Cole.
 
 #### See Also
+
 weighted.mean, mean.POSIXct, colMeans for row and column means.
 
 #### Examples
+
 Run examples
 
 ```{r, echo = TRUE, include = TRUE}
@@ -232,43 +221,42 @@ x <- c(0:10, 50)
 xm <- mean(x)
 c(xm, mean(x, trim = 0.10))
 ```
-<br>
-<br>
 
-## Getting Started: error messages{.scrollable .smaller .incremental}
+<br> <br>
 
-<br>
-  Suppose you type the following but variable 'a' has not been created.
+## Getting Started: error messages {.scrollable .smaller .incremental}
 
-```r
+<br> Suppose you type the following but variable 'a' has not been created.
+
+``` r
 10*a
 ```
-    Error: object 'a' not found
 
-    
-<br>
-  R provides informative error messages :-)
+```         
+Error: object 'a' not found
+```
+
+<br> R provides informative error messages :-)
 
 ## Getting Started: forums & AI {.scrollable .smaller .incremental}
 
-- Stack Overflow [https://stackoverflow.com](https://stackoverflow.com)
+-   Stack Overflow <https://stackoverflow.com>
 
-- Google
+-   Google
 
-- LMM
-  - ChatGPT
-  - [Github Copilot](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) 
-  - Microsoft Copilot
+-   LMM
 
-- LMM AI Editors
-  - [Cursor](https://www.cursor.com)
+    -   ChatGPT
+    -   [Github Copilot](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+    -   Microsoft Copilot
 
+-   LMM AI Editors
+
+    -   [Cursor](https://www.cursor.com)
 
 ## Things you can do with R
 
-<br>
-![](https://www.r-project.org/Rlogo.png)
-<br> 
+<br> ![](https://www.r-project.org/Rlogo.png) <br>
 
 <hr>
 
@@ -276,39 +264,37 @@ remember, calculate, store, generate, analyse, visualise, save, repeat, apply, d
 
 ## Remember data
 
-  A variable is a storage location for data with a name.
+A variable is a storage location for data with a name.
 
 ::::: columns
+::: {.column width="50%"}
+Store data ...
 
-:::{.column width="50%"}
-    
-  Store data ...
-  
 ```{r, include = TRUE, echo = TRUE}
 x <- 3
 y <- 4.2
 name <- "abcdef"
 skip <- TRUE
 ```
-  
-  Recall data ...
-  
+
+Recall data ...
+
 ```{r, echo = TRUE}
 x
 ```
- 
+
 ```{r, echo = TRUE}
 name
 ```
- 
+
 ```{r, echo = TRUE}
 nchar(name)
 ```
- 
 :::
 
-:::{.column width="50%"}
-  Query data type ...
+::: {.column width="50%"}
+Query data type ...
+
 ```{r, echo = TRUE}
 is.numeric(x)
 ```
@@ -317,7 +303,8 @@ is.numeric(x)
 is.logical(name)
 ```
 
-  Change data type ...
+Change data type ...
+
 ```{r, echo = TRUE}
 as.character(x)
 ```
@@ -330,11 +317,9 @@ as.numeric("3.14")
 as.logical("abc")
 ```
 :::
-
-::::
+:::::
 
 ## Calculate
-
 
 ```{r, echo = TRUE}
 #| code-line-numbers: false
@@ -351,49 +336,59 @@ sqrt(x^2)
 
 ## Store and manipulate sequences of values
 
-  A vector is a sequence of variables of the same type.
+A vector is a sequence of variables of the same type.
 
 ```{r, echo = TRUE}
 x <- c(11,12,13,14,15,16,17,18,19,20)
 x
 ```
 
-  Extract the third value in the vector
+Extract the third value in the vector
 
 ```{r, echo = TRUE}
 x[3]
 ```
 
-  What is the length of X?
+What is the length of X?
+
 ```{r, echo = TRUE}
 length(x)
 ```
 
-## Store and manipulate sequences of values (cont'd){.scrollable}
+## Store and manipulate sequences of values (cont'd) {.scrollable}
 
-  Vectors can be subset and combined.
+Vectors can be subset and combined.
+
 ```{r, echo = TRUE}
 x[c(1, 5, 7)]
 ```
 
-  Subset by exclusion
+Subset by exclusion
+
 ```{r, echo = TRUE}
 x[-c(1, 5, 7)]
 ```
 
-  Subset by rule <p style="font-size: 18px;">(TRUE|FALSE)</p>
+Subset by rule
+
+<p style="font-size: 18px;">
+
+(TRUE\|FALSE)
+
+</p>
+
 ```{r, echo = TRUE}
 x>15
 x[x>15]
 ```
 
-  Combine
+Combine
+
 ```{r, echo = TRUE}
 y <- c("Dog", "Cat")
 z <- c(x[1:3], y)
 z
 ```
-
 
 ## Calculate with vectors
 
@@ -406,7 +401,6 @@ x/2
 log10(x)
 ```
 
-
 ## Calculate with vectors (cont'd)
 
 <br>
@@ -418,7 +412,6 @@ x*y
 x/(y-1)
 ```
 
-
 ## Generate data: seq()
 
 <br>
@@ -429,7 +422,6 @@ a
 length(a)
 ( a <- seq(0, 100, length=5) )
 ```
-
 
 ## Generate data: rep()
 
@@ -446,8 +438,7 @@ rep(5:1,3)
 
 ## Store and manipulate matrices
 
-<br>
-  A matrix is a set of elements laid out in rows and columns.
+<br> A matrix is a set of elements laid out in rows and columns.
 
 ```{r, echo = TRUE}
 x <- rep(1, 5)
@@ -469,8 +460,7 @@ rbind(c("0","X"), z) ## add data to the matrix with row bind
 
 ## Store and manipulate matrices (cont'd)
 
-<br>
-  - matrix[rows,columns]
+<br> - matrix\[rows,columns\]
 
 ```{r, echo = TRUE}
 z
@@ -482,7 +472,8 @@ z[c(1,3),2]
 
 ## Store and manipulate matrices (cont'd)
 
-  - adding column and row names
+-   adding column and row names
+
 ```{r, echo = TRUE}
 colnames(z) <- c("x", "y")
 rownames(z) <- c("r1", "r2", "r3", "r4", "r5")
@@ -495,6 +486,7 @@ z[,"y"]
 ## Calculate with matrices
 
 <br>
+
 ```{r, echo = TRUE}
 m <- rbind(c(1,2,3),
              c(3,2,1),
@@ -507,8 +499,8 @@ round(m %*% solve(m))
 
 ## Store and manipulate datasets: lists
 
-<br>
-  - A list is like a vector, but it can contain elements or variables of different types.
+<br> - A list is like a vector, but it can contain elements or variables of different types.
+
 ```{r, echo = TRUE}
 y <- diag(2)
 w <- list(x=1, y=y, z="abc")
@@ -520,9 +512,8 @@ w$y
 
 ## Store and manipulate datasets: lists (cont'd)
 
-<br>
-  - Variables of a list can be extracted by name or number
-  
+<br> - Variables of a list can be extracted by name or number
+
 ```{r, echo = TRUE}
 w$y
 
@@ -532,7 +523,8 @@ w[[2]]
 
 ## Store and manipulate datasets: data frames
 
-  - A data frame is like a matrix but the columns can be different types. You could think of it as a list of vectors each of the same length.
+-   A data frame is like a matrix but the columns can be different types. You could think of it as a list of vectors each of the same length.
+
 ```{r, echo = TRUE}
 x <- rep(1, 5)
 y <- c("A","B","A","B","C")
@@ -544,26 +536,24 @@ class(d$b)
 str(d) ## structure !
 ```
 
-
 ## stop("Time for a break")
 
 <br>
+
 ```{r, echo = TRUE}
 # stop("Time for a break")
 ```
 
-    We will return after
-    
+```         
+We will return after
+```
+
 ```{r, echo = TRUE}
 # Sys.sleep(10*60)
 ```
 
-
-<div style="text-align: center;">
-![](https://img.freepik.com/premium-photo/cup-coffee-with-text-break-time_446269-102.jpg){width="50%"}</div>
+::: {style="text-align: center;"}
+![](https://img.freepik.com/premium-photo/cup-coffee-with-text-break-time_446269-102.jpg){width="50%"}
+:::
 
 # Practical 1.1
-
-
-
-

@@ -497,9 +497,9 @@ David A Hughes
 <section id="getting-started-1" class="slide level2 smaller">
 <h2>Getting Started</h2>
 <ul>
-<li>R is a statistical programming language (based on S)</li>
-<li>R is open source - researchers develop packages to implement new statistical methods, plots or applications</li>
-<li>R runs on Windows, MacOS and UNIX
+<li><p>R is a statistical programming language (based on S)</p></li>
+<li><p>R is open source - researchers develop packages to implement new statistical methods, plots or applications</p></li>
+<li><p>R runs on Windows, MacOS and UNIX</p>
 <hr></li>
 </ul>
 <div class="columns">
@@ -545,8 +545,8 @@ David A Hughes
 <section id="getting-started-installing" class="slide level2 smaller">
 <h2>Getting Started: Installing</h2>
 <ul>
-<li>Visit <a href="https://www.r-project.org">https://www.r-project.org</a> and click <a href="https://cran.r-project.org/mirrors.html">download R</a></li>
-<li>Choose your nearest CRAN mirror (such as <a href="https://archive.linux.duke.edu/cran/">https://archive.linux.duke.edu/cran/</a>)</li>
+<li>Visit <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a> and click <a href="https://cran.r-project.org/mirrors.html">download R</a></li>
+<li>Choose your nearest CRAN mirror (such as <a href="https://archive.linux.duke.edu/cran/" class="uri">https://archive.linux.duke.edu/cran/</a>)</li>
 <li>Choose “Download R for [Windows/Mac/Linux]”</li>
 <li>Current release is R 4.4.1 “Race for Your Life” released on 2024/06/14
 <ul>
@@ -562,7 +562,7 @@ David A Hughes
 <div class="column" style="width:15%;">
 <p><img data-src="https://www.r-project.org/Rlogo.png" style="width:100.0%"></p>
 </div><div class="column" style="width:40%;">
-<p><img data-src="../images/RConsole.png" style="width:30.0%"></p>
+<p><img data-src="../images/RConsole.png" style="width:80.0%"></p>
 </div><div class="column" style="width:45%;">
 <ul>
 <li>The R console initially just shows information on the version of R running, how to get help and how to quit</li>
@@ -594,7 +594,7 @@ David A Hughes
 <ul>
 <li>RStudio makes R easier to use</li>
 <li>It includes a code editor, debugging &amp; visualization tools</li>
-<li><a href="https://posit.co">https://posit.co</a></li>
+<li><a href="https://posit.co" class="uri">https://posit.co</a></li>
 <li>RStudio User Guide can be found <a href="https://docs.posit.co/ide/user/">here</a></li>
 </ul>
 </div><div class="column" style="width:70%;">
@@ -665,7 +665,7 @@ a logical evaluating to TRUE or FALSE indicating whether NA values should be str
 <section id="getting-started-forums-ai" class="slide level2 scrollable smaller incremental">
 <h2>Getting Started: forums &amp; AI</h2>
 <ul>
-<li><p>Stack Overflow <a href="https://stackoverflow.com">https://stackoverflow.com</a></p></li>
+<li><p>Stack Overflow <a href="https://stackoverflow.com" class="uri">https://stackoverflow.com</a></p></li>
 <li><p>Google</p></li>
 <li><p>LMM</p>
 <ul>
@@ -834,10 +834,10 @@ a logical evaluating to TRUE or FALSE indicating whether NA values should be str
 <pre><code>[1] 12 13 14 16 18 19 20</code></pre>
 </div>
 </div>
-Subset by rule
+<p>Subset by rule</p>
 <p style="font-size: 18px;">
-(TRUE|FALSE)
-</p>
+</p><p>(TRUE|FALSE)</p>
+<p></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&gt;</span><span class="dv">15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1099,7 +1099,7 @@ r5 "1" "C"</code></pre>
 </section>
 <section id="store-and-manipulate-datasets-lists" class="slide level2">
 <h2>Store and manipulate datasets: lists</h2>
-<p><br> - A list is like a vector, but it can contain elements of different types.</p>
+<p><br> - A list is like a vector, but it can contain elements or variables of different types.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">2</span>)</span>
 <span id="cb120-2"><a href="" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x=</span><span class="dv">1</span>, <span class="at">y=</span>y, <span class="at">z=</span><span class="st">"abc"</span>)</span>
@@ -1128,33 +1128,51 @@ $z
 </div>
 </div>
 </section>
+<section id="store-and-manipulate-datasets-lists-contd" class="slide level2">
+<h2>Store and manipulate datasets: lists (cont’d)</h2>
+<p><br> - Variables of a list can be extracted by name or number</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="" aria-hidden="true" tabindex="-1"></a>w<span class="sc">$</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="" aria-hidden="true" tabindex="-1"></a>w[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    1</code></pre>
+</div>
+</div>
+</section>
 <section id="store-and-manipulate-datasets-data-frames" class="slide level2">
 <h2>Store and manipulate datasets: data frames</h2>
 <ul>
 <li>A data frame is like a matrix but the columns can be different types. You could think of it as a list of vectors each of the same length.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb126-2"><a href="" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>)</span>
-<span id="cb126-3"><a href="" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>x, <span class="at">b=</span>y)</span>
-<span id="cb126-4"><a href="" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">2</span>,] <span class="do">## extract row 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb130-2"><a href="" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>)</span>
+<span id="cb130-3"><a href="" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a=</span>x, <span class="at">b=</span>y)</span>
+<span id="cb130-4"><a href="" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">2</span>,] <span class="do">## extract row 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b
 2 1 B</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>a <span class="do">## extract column 'a'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>a <span class="do">## extract column 'a'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 1 1 1 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(d<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(d) <span class="do">## structure !</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(d) <span class="do">## structure !</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   5 obs. of  2 variables:
  $ a: num  1 1 1 1 1
@@ -1166,14 +1184,14 @@ $z
 <h2>stop(“Time for a break”)</h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># stop("Time for a break")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># stop("Time for a break")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>We will return after</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.sleep(10*60)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.sleep(10*60)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="text-align: center;">
-<img data-src="https://img.freepik.com/premium-photo/cup-coffee-with-text-break-time_446269-102.jpg" style="width:50.0%">
+<p><img data-src="https://img.freepik.com/premium-photo/cup-coffee-with-text-break-time_446269-102.jpg" style="width:50.0%"></p>
 </div>
 </section>
 <section id="practical-1.1" class="title-slide slide level1 center">

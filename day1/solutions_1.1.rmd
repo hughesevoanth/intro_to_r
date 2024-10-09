@@ -1,0 +1,203 @@
+---
+title: "Introduction to R: practical 1.1"
+author: "PBRC: DA Hughes"
+date: "Oct 9th, 2024"
+output: html_document
+---
+
+```{r render, eval=F, echo=F}
+## install.packages("rmarkdown")
+library(rmarkdown)
+
+show.solutions <- F
+render("practical.rmd",output_file="practical.html")
+
+show.solutions <- T
+render("practical.rmd",output_file="solutions.html")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+if (!exists("show.solutions"))
+    show.solutions <- F
+## show output for solutions copy only, use as results=hide.results()
+hide.results <- function() ifelse(show.solutions, "markup", "hide")
+## show code and output for solutions copy only, use as include=hide.all()
+hide.all <- function() show.solutions
+## show figure for solutions copy only, use as show.fig=hide.figure()
+hide.figure <- function() ifelse(show.solutions, "asis", "hide")
+```
+
+## Objectives
+
+By the end of this practical it is intended that you will be able to:
+
+* Define variables
+  * vectors
+  * matrixes
+  * data frames
+  * lists
+* Perform math with variables 
+* Subset variables
+
+Begin by opening R Console or a Terminal and starting an R session. Work directly in the interactive R console. 
+
+
+## Defining variables and simple addition 
+
+### Vectors
+
+1. Define the variable '**x**' as a vector with the values 1 to 10.
+```{r}
+x = 1:10
+```
+
+2. Define a second variable '**y**' as a vector with the value 10. 
+```{r}
+y = 10
+```
+
+3. Add '**x**' to '**y**'.
+```{r}
+x + y
+```
+
+4. What is happening with the value assigned to the variable '**y**'?
+
+--
+
+5. Redefine '**y**' the values 10 and 20. 
+```{r}
+y = c(10,20)
+```
+
+6. Now add '**x**' to '**y**'.
+```{r}
+x + y
+```
+
+7. What is happening with the values assigned to the variable '**y**'?
+
+--
+
+8. Redefine '**y**' the values 10, 20, and 30. 
+```{r}
+y = c(10, 20, 30)
+```
+
+9. Now add '**x**' to '**y**'.
+```{r, warning=FALSE}
+x + y
+```
+
+10. What is happening with the values assigned to the variable '**y**'?
+
+--
+
+11. What were to happen if the variable '**x**' had the values 1, 2, and 3?
+```{r}
+x = 1:3
+x + y
+```
+
+11. What were to happen if the variable '**x**' had the values 1, 2, and "PBRC"?
+```{r, error=TRUE}
+x = c(1:2, "PBRC")
+x + y
+```
+
+12. Could you force the addition of the first and second elements of x to the value 10?
+
+```{r}
+as.numeric(x[1:2]) + 10
+```
+
+### Matrixes
+
+13. Define a matrix '**mat**' with 3 rows and 3 columns with the values 1 to 9
+
+```{r}
+mat = matrix(1:9, nrow = 3, ncol = 3)
+```
+
+14. Add the value 100 to all elements of the matrix
+
+```{r}
+mat + 100
+```
+15. Add the value 100 to only the 2nd column of the matrix '**mat**'
+
+```{r}
+mat[,2] + 100
+```
+
+15. Add the value 100 to only the 3rd row of the matrix '**mat**'
+
+```{r}
+mat[3,] + 100
+```
+
+16. Give the matrix '**mat**' column names "cat", "dog", and "donkey".
+
+```{r}
+colnames(mat) = c("cat", "dog", "donkey")
+mat
+```
+17. Multiply the column donkey to the column dog
+
+```{r}
+mat[, "dog"] + mat[, "donkey"]
+```
+
+### Data Frames
+
+18. Define a data frame '**df**' with three columns called "ID", "height" (m), and "weight" (kg) with 3 observations each
+
+```{r}
+df = data.frame(ID = paste0(rep("ID_", 3) , 1:3), height = c(1.82, 1.73, 1.67), weight = c(90, 110, 85))
+```
+
+19. Calculate BMI (kg/m2) from the data frame you just made
+
+```{r}
+(BMI = df$weight / df$height^2)
+# BMI
+```
+
+20. Add BMI to the data frame
+
+```{r}
+df$BMI = BMI
+df
+```
+
+### Lists
+
+21. Place the variables '**y**', '**mat**', and '**df**' into a list element called '**mylist**'.
+
+```{r}
+mylist = list(y = y, mat = mat, df = df)
+```
+
+22. Using the list add the '**mat**' column *donkey* to the '**df**' column *BMI*. 
+
+```{r}
+mylist$mat[, "donkey"] + mylist$df$BMI
+```
+
+23. Is there a second way to do the same thing? Think about how you extract a variable from a list.
+
+```{r}
+mylist[[2]][, "donkey"] + mylist[[3]]$BMI
+```
+
+
+24. Would the command mylist\$mat\$donkey + mylist\$df\$BMI work to complete task 22?
+
+```{r, error = TRUE}
+mylist$mat$donkey + mylist$df$BMI
+```
+
+<br><br><br><br><br>
+

@@ -1,0 +1,53 @@
+/*-- scss:defaults --*/
+
+// colors
+$body-bg: #3E1C84;
+$body-color: #FFFFFF;
+$link-color: #FDD023;
+$table-text-color: #FFFFFF;  // Custom table text color
+$presentation-heading-color: #FDD023;
+$code-block-border-color: #50555B;
+$code-block-bg: #262626;
+$tabset-border-color: #00A2D6;
+
+// fonts
+$font-family-sans-serif: 'Roboto', sans-serif !default;
+$presentation-font-size-root: 30px !default;
+$presentation-font-smaller: 0.7em !default;
+
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+// Adjust body text for better readability
+.reveal p {
+  line-height: 1.6em;  // Slightly taller line-height for better readability
+  margin-bottom: 1rem;  // Ensures proper spacing between paragraphs
+}
+
+// Ensure Markdown tables fit within the slide
+table {
+  width: 80%;  // Ensures the table takes up the full width of the slide
+  table-layout: fixed;  // Prevents the table from expanding beyond the slide
+  font-size: clamp(16px, 1.35vw, 26px);  // Dynamic font size for table text
+  word-wrap: break-word;  // Ensures long text breaks to fit within cells
+  overflow-x: auto;  // Allows scrolling if the table is too wide
+  color: $table-text-color; 
+  background-color: #3E1C84; 
+}
+
+table th, table td {
+  padding: 0.5rem;  // Adds space around table content
+  text-align: center;  // Aligns text to the left
+  color: $table-text-color;
+}
+
+// Add hover effect to table rows
+table tr:hover {
+  //background-color: darken($body-bg, 20%);
+  background-color: #00A2D6;
+  color: $body-color;
+}

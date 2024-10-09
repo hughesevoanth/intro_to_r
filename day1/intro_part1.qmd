@@ -106,7 +106,7 @@ what, why, downloading, opening, using, terminal, rstudio, help, errors
 :::
 
 ::: {.column width="40%"}
-![](../images/RConsole.png){width="80%"}
+![](../images/RConsole.png)
 :::
 
 ::: {.column width="45%"}

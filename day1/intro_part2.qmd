@@ -32,6 +32,7 @@ library(tidyverse)
 ## Handle missing data
 
 <br>
+
 ```{r, echo = TRUE}
 y <- c("A","B","A","B","C")
 y[2] <- 2
@@ -44,52 +45,55 @@ na.omit(y)
 
 ## Save and load data: working directory
 
-<br>
-To open files, you will need to tell R where the files are. To do this, it helps to know where R will start looking. This is called the 'working directory'.
+<br> To open files, you will need to tell R where the files are. To do this, it helps to know where R will start looking. This is called the 'working directory'.
 
 ```{r, eval=FALSE, results=hide.results()}
 getwd()
 ```
-    [1] "Users/person/Documents/PBRC/Intro/To/R"
-    
+
+```         
+[1] "Users/person/Documents/PBRC/Intro/To/R"
+```
+
 You can change this using setwd.
+
 ```{r, eval=FALSE}
 setwd("Users/NEWperson/Documents/work/stuff/not/to/share")
 ```
 
-
 ## Save and load data: reading csv files {.scrollable .smaller}
 
-::::columns
+::::: columns
+::: {.column width="40%"}
+<br> Suppose I have a spreadsheet stored in CSV format.
 
-:::{.column width="40%"}
-<br>
-Suppose I have a spreadsheet stored in CSV format.
+```         
+"id","age","sex","diet","bmi"
+1,32,"M",0,25.7957231474661
+2,35,"M",0,28.8952139451377
+3,41,"M",0,29.9258448186199
+4,29,"M",0,27.3383500990741
+5,33.5,"M",1,28.2469210985821
+6,33.2,"M",1,27.0473176810354
+7,32.9,"M",1,30.3031786852156
+8,32.6,"F",1,28.5621419729205
+9,32.3,"F",1,28.05344654591
+10,32,"F",1,28.8864676350323
+```
 
-    "id","age","sex","diet","bmi"
-    1,32,"M",0,25.7957231474661
-    2,35,"M",0,28.8952139451377
-    3,41,"M",0,29.9258448186199
-    4,29,"M",0,27.3383500990741
-    5,33.5,"M",1,28.2469210985821
-    6,33.2,"M",1,27.0473176810354
-    7,32.9,"M",1,30.3031786852156
-    8,32.6,"F",1,28.5621419729205
-    9,32.3,"F",1,28.05344654591
-    10,32,"F",1,28.8864676350323
 ...
 :::
 
-:::{.column width="60%"}
+::: {.column width="60%"}
 read.csv will read csv file and store it as data frames.
 
 ```{r}
 mydata <- read.csv("bmi.csv")
 ```
 
-
-    - NOTE there is also a read.table(sep = "") function and a read.delim(sep = "\t")
-    
+```         
+- NOTE there is also a read.table(sep = "") function and a read.delim(sep = "\t")
+```
 
 ```{r}
 mydata[1:3,]
@@ -100,11 +104,8 @@ mydata$bmi[1:5]
 
 mydata[5,]
 ```
-
 :::
-
-::::
-
+:::::
 
 ## Save and load data: writing csv files
 
@@ -133,41 +134,38 @@ table(mydata$sex) # frequencies
 
 ## Statistical analyses: dataset summaries
 
-- The summary function can be used to summarize single variables
+-   The summary function can be used to summarize single variables
 
 ```{r}
 summary(mydata$bmi)
 ```
 
-- or entire datasets.
+-   or entire datasets.
 
 ```{r}
 summary(mydata)
 ```
 
-
 ## Statistical analyses: evaluating associations
 
-::::columns
-:::{.column width="50%"}
-- correlation
+::::: columns
+::: {.column width="50%"}
+-   correlation
 
 ```{r}
 cor(mydata$bmi, mydata$age, method = "pearson")
 ```
 
-- effect estimate
+-   effect estimate
 
 ```{r}
 fit <- lm(bmi~age, data=mydata)
 fit
 ```
-
-
 :::
-:::{.column width="50%"}
 
-- plot
+::: {.column width="50%"}
+-   plot
 
 ```{r, fig.width = 5, fig.height=4}
 plot(mydata$age, mydata$bmi, 
@@ -176,9 +174,8 @@ plot(mydata$age, mydata$bmi,
      bg = "dodgerblue", col = "red")
 abline(fit, col = "grey30", lwd = 3, lty = 2)
 ```
-
 :::
-::::
+:::::
 
 ## Statistical analyses: summarizing regression model fits
 
@@ -217,29 +214,26 @@ abline(fit, col = "grey30", lwd = 3, lty = 2)
 
 ## Plotting: histogram
 
-::::columns
-:::{.column width="50%"}
+::::: columns
+::: {.column width="50%"}
+-   histogram of BMI
 
- -  histogram of BMI
- 
 ```{r, fig.width = 5, fig.height=4}
 hist(mydata$bmi, main="BMI",xlab = "BMI", 
      col = "limegreen" )
 ```
 :::
 
-:::{.column width="50%"}
+::: {.column width="50%"}
+-   histogram of linear model residuals
 
- -  histogram of linear model residuals
- 
 ```{r, fig.width = 5, fig.height=4}
 fitres = residuals(fit)
 hist(fitres, main="lm() residuals",xlab = "BMI", 
      col = "darkslateblue" )
 ```
-
 :::
-::::
+:::::
 
 # Plotting: boxplot
 
@@ -249,16 +243,16 @@ boxplot(bmi ~ diet, data=mydata, col = "darkgoldenrod2")
 
 ## Save Plot
 
- - save as a pdf
- 
+-   save as a pdf
+
 ```{r, eval=FALSE}
 pdf(file = "boxplot.pdf", width=4, height=6)
 boxplot(bmi~diet, data=mydata)
 dev.off()
 ```
 
- - save as a postscript
- 
+-   save as a postscript
+
 ```{r, eval=FALSE}
 postscript(file = "boxplot.eps", width=4, height=6)
 boxplot(bmi~diet, data = mydata)
@@ -312,16 +306,15 @@ score = seq(70,100, by = 5)
 
 
 ```
+
 <br> <br> <br>
 
 ## Recipes: create and apply {.smaller .smaller .scrollable}
 
-Functions consist of a sequence of commands applied to a set of variables that return some output.
-R provides many functions such as help, cor, median.
-Users can create their own functions for repetitive tasks, e.g. a function for the distance of a point from 0.
+Functions consist of a sequence of commands applied to a set of variables that return some output. R provides many functions such as help, cor, median. Users can create their own functions for repetitive tasks, e.g. a function for the distance of a point from 0.
 
- - define a function
- 
+-   define a function
+
 ```{r}
 euclidean.norm <- function(x) {
   out <- sqrt(sum(x^2))
@@ -329,8 +322,8 @@ euclidean.norm <- function(x) {
 }
 ```
 
-  - use the function
-  
+-   use the function
+
 ```{r}
 euclidean.norm(c(3,4))
 euclidean.norm(c(2,3,6))
@@ -339,10 +332,10 @@ euclidean.norm(c(1,4,8))
 
 ## Recipes: to repeat a query
 
-::::columns
-:::{.column width="50%"}
-  - while statements
-  
+::::: columns
+::: {.column width="50%"}
+-   while statements
+
 ```{r}
 n = nrow(mydata)
 i = 1
@@ -356,7 +349,7 @@ while(i <= n){
 out
 ```
 
-  - for loops
+-   for loops
 
 ```{r}
 out = c()
@@ -368,10 +361,9 @@ out
 ```
 :::
 
-:::{.column width="50%"}
-  
-  - sapply
-  
+::: {.column width="50%"}
+-   sapply
+
 ```{r}
 out = sapply(1:nrow(mydata), function(i){
   sum( mydata$age[i] < 32  )
@@ -379,7 +371,8 @@ out = sapply(1:nrow(mydata), function(i){
 out
 ```
 
-  - apply (rows or columns)
+-   apply (rows or columns)
+
 ```{r}
 out = apply(mydata, 1, function(x){
   sum( x[2] < 32 )
@@ -387,46 +380,47 @@ out = apply(mydata, 1, function(x){
 out
 ```
 :::
-::::
+:::::
 
 ## Share: loading packages {.scrollable}
 
 An R package is a collection of functions and/or data sets created for use by other R users. A package can be loaded using library.
 
-  - install a package 
-  
+-   install a package
+
 ```{r, eval=FALSE}
 install.packages("Hmisc")
 ```
 
-  - load a package
-  
+-   load a package
+
 ```{r}
 library(Hmisc)
 ```
+
 After loading, functions and data provided by the package can be used.
 
 ```{r}
 describe(c(1,1,2,1,3,5,1,3,5,2,3,4))
 ```
+
 ## Share: installing packages
 
-  - install a package 
-  
+-   install a package
+
 ```{r, eval=FALSE}
 install.packages("Hmisc")
 ```
 
+-   get help on a package
 
-  - get help on a package
-  
 ```{r, eval = FALSE}
 help(package="Hmisc")
 ```
 
 ## Share: learn more R with "swirl"
 
-![](https://swirlstats.com/images/swirl_new_large_final.png){style="background-color: white; padding: 10px;" width=50%}
+![](https://swirlstats.com/images/swirl_new_large_final.png){style="background-color: white; padding: 10px;" width="50%"}
 
 swirl website link [here](https://swirlstats.com)
 
@@ -435,7 +429,9 @@ install.packages("swirl")
 library(swirl)
 ```
 
-    | Hi! Type swirl() when you are ready to begin.
+```         
+| Hi! Type swirl() when you are ready to begin.
+```
 
 ## Share: creating packages for others
 
@@ -451,6 +447,26 @@ Here is a function I shared as a gist. [rntransform](https://gist.github.com/hug
 
 It can also be found in an R package (moosefun) I wrote and share on github [here](https://github.com/hughesevoanth/moosefun).
 
+
+## stop("Time for another break")
+
+<br>
+
+```{r, echo = TRUE}
+# stop("Time for another break")
+```
+
+```         
+We will return after
+```
+
+```{r, echo = TRUE}
+# Sys.sleep(10*60)
+```
+
+::: {style="text-align: center;"}
+![](https://img.freepik.com/premium-photo/cup-coffee-with-text-break-time_446269-102.jpg){width="50%"}
+:::
 
 
 # Practical 1.2

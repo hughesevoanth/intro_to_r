@@ -86,8 +86,8 @@ Start a new R Script by selecting:
  - And this is where you can send code to the console to be run by R. 
  
 :::
-:::{.column width="40%"}
-![](../images/new_r_script.png){width="80%"}
+:::{.column width="60%"}
+![](../images/new_r_script.png){width="100%"}
 :::
 ::::
 

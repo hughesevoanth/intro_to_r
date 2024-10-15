@@ -199,7 +199,7 @@ Script structure can be clear written out in the script.
 :::
 :::{.column width="60%"}
 <div style="text-align: center;">
-![](../images/structure.png)
+![](../images/structure.png){width="120%"}
 </div>
 :::
 ::::
@@ -317,7 +317,7 @@ power_analysis.R
 
 :::{.column width="60%"}
 <div style="text-align: center;">
-![](../images/bad_script.png){width="90%"}
+![](../images/bad_script.png){width="85%"}
 </div>
 :::
 ::::

@@ -1,0 +1,360 @@
+---
+title: "A quick review of day 1"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom.scss]
+    footer: "A review of day 1"
+    logo: "../images/pb_white.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Vectors
+
+Define vectors
+
+```{r}
+x = c(1,2,3,4,5,6,7,8,9,10) # use c(), a function, to combine values into a vector
+x = 1:10. ## use ":" as a short cut to make a sequence of values
+y = seq(from = 101, to = 110, by = 1) ## us seq, a function, to make a sequence of values
+presidents = c("Washington","Adams","Jefferson","Madison","Monroe") ## You can place strings into a vector
+```
+
+Perform arithmetic with vectors
+
+```{r}
+x + y ## addition
+x - y ## subtraction
+x * y ## multiplication  
+x / y ## division
+log(x) + sqrt(y) ## logging and square roots
+```
+
+## Vectors cont'd
+
+Add names to elements in a vector object
+
+```{r}
+x = rnorm(n = 5, mean = 27, sd = 3.5) ## sample 5 observations from a random normal distribution
+presidents = c("Washington","Adams","Jefferson","Madison","Monroe")
+names(x) = presidents
+```
+
+extract elements or subsets of a vector
+```{r}
+x[c(2,4)] ## extract by position
+x[c("Adams","Madison")] ## extract by name
+```
+
+Subset and perform arithmetic
+
+```{r}
+x[c(2,4)] + 100
+```
+
+
+## Matrixes
+
+Define a matrix
+
+```{r}
+mymatA = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE) ## use, matrix(), a function to make a matrix
+mymatA
+
+mymatB = matrix(1:10, nrow = 5, ncol = 2, byrow = FALSE) ## fill the matrix by column rather than row
+mymatB
+```
+
+## Matrices cont'd
+
+how many rows and columns are in the matrix
+
+```{r}
+dim(mymatA) ## use the function dim() to return the dimensions
+nrow(mymatA) ## how many rows ?
+ncol(mymatA) ## how many columns ?
+```
+
+## Matrices cont'd
+
+Add row and column names to a matrix
+```{r}
+mymatA = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE,
+                dimnames = list(presidents, c("height","weight") ) ) 
+rownames(mymatB) = presidents
+colnames(mymatB) = c("height","weight")
+mymatA
+```
+
+## Matrices cont'd
+
+Subset a matrix[ROWS, COLS]
+```{r}
+mymatA["Washington", ] ## extract the first row named "Washington"
+mymatA[1, ] ## extract the first row
+mymatA[, "weight"] ## extract the second column named "weight"
+mymatA[, 2] ## extract the second column
+mymatA[c("Washington","Adams"), "height"] ## extract the height of Washington and Adams
+mymatA[1:2, 1]
+```
+
+## Matrices cont'd
+
+Matrix arithmetic
+```{r}
+mymatA[, "weight"] / mymatA[, "height"]^2 ## estimate a new variable from two columns of data
+mymatA + mymatB ## perform addition across to equal sized matrices
+t(mymatA) * t(mymatB) ## transpose both matrices and perform multplication
+```
+
+
+## Data frames
+
+Define a data frame
+
+```{r}
+my_presidents = data.frame(names = presidents, height = mymatA[, "height"], weight = mymatA[, "weight"])
+```
+
+Check the structure of the data frame
+
+```{r}
+str(my_presidents)
+```
+
+How many rows and columns
+
+```{r}
+dim(my_presidents) ## query both dimensions
+nrow(my_presidents) ## query the number of rows
+ncol(my_presidents) ## query the number of columns
+```
+
+## Data frames cont'd
+
+Extract a column of data
+
+```{r}
+my_presidents[, "height"] 
+my_presidents$height ## this is the same as the line above
+```
+
+Subset certain rows of the data frame
+
+```{r}
+my_presidents[c("Adams","Madison"),] ## extract specific rows by name
+w = which(my_presidents$weight > 6) ## find the presidents with a weight larger than 6
+my_presidents[w,] ## extract all data for those presidents who have a weight larger than 6
+```
+
+## Data frames cont'd
+
+Arithmetic
+
+```{r}
+w = which(my_presidents$weight > 6) ## find the presidents with a weight larger than 6
+my_presidents[w,] ## extract all data for those presidents who have a weight larger than 6
+my_presidents$weight[w] / my_presidents$height[w]^2 ## estimate a new variable from the subsetted data
+```
+
+
+## Lists
+
+place numerous R objects into a single object
+
+```{r}
+mylist = list( x = x, # a vector
+               mymatA = mymatA, # a matrix
+               my_presidents = my_presidents # a data frame
+               ) ## use the function list() to define a list
+mylist
+```
+
+## Lists cont'd 
+
+each element of the list can carry a name
+```{r}
+names(mylist)
+```
+
+you can rename them
+```{r}
+names(mylist) = c("objV","objM","objD")
+```
+
+then extract the object by the name
+```{r}
+mylist[["objV"]] ## use the [[]] syntax
+mylist$objV ## or extract the desired object with the $ symbol
+```
+
+## Loops and apply
+
+for loops
+
+```{r}
+for(i in 1:5){
+  cat(paste0("I am now running iteration ", i, "\n"))
+}
+```
+
+
+apply()
+    
+    apply() is a function that allows you to apply the same function over 
+    rows (1) or 
+    columns (2) 
+    of a matrix or data frame
+
+```{r}
+mymeans = apply(mylist$objD[,2:3], 2, mean) ## apply the function mean() to the numeric columns (2) of the data frame 
+mymeans
+```
+
+
+## Loops and apply cont'd
+
+lapply() is a function that iterates over a list of vector
+
+```{r}
+out = lapply(1:3, function(x){
+  x + 10
+})
+out
+unlist(out) ## convert a list into a vector
+```
+
+sapply() is the same as lapply but it returns a vector
+
+```{r}
+out = sapply(1:3, function(x){
+  x + 10
+})
+out
+```
+
+
+## Loops and apply cont'd
+
+Another example of using lapply
+
+```{r}
+alist = list(A = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ), 
+             B = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ), 
+             C = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ))
+bmi = lapply(alist, function(x){
+  x$weight/x$height^2
+})
+bmi
+```
+
+estimate mean bmi
+
+```{r}
+sapply(bmi, mean)
+```
+
+
+## Plots
+
+Scatter plots
+
+```{r, fig.width = 5, fig.height = 3}
+x = 1:25
+y = 1:25
+plot(x,y, 
+     col = rainbow(length(x)), ## color of plotted elements
+     pch = 1:25, ## shape of plotted elements
+     bg = "grey50",
+     cex = 1.5, ## size of plotted elements
+     xlab = "My X Variable", ylab = "My Y Variable", main = "Plot shapes and colors")
+```
+
+## Plots cont'd
+
+:::: columns
+:::{.column width="50%"}
+Using data from the iris package 
+
+```{r}
+iris[1:2, ] |> knitr::kable() |> kableExtra::kable_material_dark()
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+plot(iris$Sepal.Length, iris$Petal.Length, 
+     col = iris$Species, 
+     cex = 2, pch = c(15,19,4)[iris$Species],
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     main = "iris data set")
+legend("bottomright", 
+       legend = unique(iris$Species), 
+       pch = c(15,19,4), col = 1:3 )
+fit = lm(Petal.Length ~ Sepal.Length, 
+          data = iris)
+abline(fit, 
+       lwd = 3, lty = 2, 
+       col = "dodgerblue")
+```
+:::
+
+::::
+
+## Plots cont'd
+
+Histograms
+
+:::: columns
+:::{.column width="50%"}
+ 
+```{r, fig.width = 5, fig.height = 4.5}
+pcol = wesanderson::wes_palette("Darjeeling1", 2)
+par(mfrow=c(2,1), mar = c(5,2,1,0))
+hist(iris$Sepal.Length, xlab = "Sepal Length", main = "", col = pcol[1])
+hist(iris$Petal.Length,  xlab = "Petal Length",main = "", col = pcol[2])
+```
+:::
+:::{.column width="50%"}
+
+```{r, fig.width = 5, fig.height = 4.5}
+pcol = wesanderson::wes_palette("FrenchDispatch", 2)
+par(mfrow=c(2,1), mar = c(5,2,1,0))
+hist( moosefun::rntransform(iris$Sepal.Length), main = "", xlab = "RNT Sepal Length", col = pcol[1])
+hist(moosefun::rntransform(iris$Petal.Length), main = "",  xlab = "RNT Petal Length", col = pcol[2])
+```
+
+:::
+::::
+
+## Plots cont'd
+
+Box Plots
+
+```{r, fig.height = 4, fig.width = 3}
+sex = sample(0:1, 50, replace = TRUE) # sex = rbinom(50, 1, 0.5)
+height = sqrt(0.25) * sex + rnorm(50, 0, sqrt(1-0.25) )
+height = as.vector(scale(height, center = TRUE, scale = TRUE)) * 0.25 + 1.75
+mydata = data.frame(sex = sex, height = height)
+boxplot(height ~ sex, data = mydata, col = RColorBrewer::brewer.pal(3, "Set1")[1:2] )
+```
+
+
+
+
+
+
+
+

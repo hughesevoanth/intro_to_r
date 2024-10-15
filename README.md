@@ -44,26 +44,25 @@ By the end of the course students will be able to:
 |Date|Session |Time | Presenter & Tutors|
 |--------|--------|-------|-------|
 | Oct 9th, 2024 | (1) Introduction to R part 1 -  the basics [web](https://hughesevoanth.github.io/intro_to_r/day1/intro_part1.html)| 0900-1030 | David Hughes |
-| | &nbsp;&nbsp;&nbsp;&nbsp; Practical 1  <br> &nbsp;&nbsp;&nbsp;&nbsp; working with vectors, matrixes, data frames, and lists [practical 1.1](https://hughesevoanth.github.io/intro_to_r/day1/practical_1.1.html) [solutions 1.1](https://hughesevoanth.github.io/intro_to_r/day1/solutions_1.1.html)| 1045-1145 | David & others|
+| | &nbsp;&nbsp;&nbsp;&nbsp; Practical 1  <br> &nbsp;&nbsp;&nbsp;&nbsp; working with vectors, matrixes, data frames, and lists [practical 1.1](https://hughesevoanth.github.io/intro_to_r/day1/practical_1.1.html) [solutions 1.1](https://hughesevoanth.github.io/intro_to_r/day1/solutions_1.1.html)| 1045-1145 | David, Terry, & Dinah|
 |Oct 9th, 2024| (2) Introduction to R part 2  - wrangling, loops, and apply [web](https://hughesevoanth.github.io/intro_to_r/day1/intro_part2.html) | 1300 - 1430 | David Hughes|
 ||&nbsp;&nbsp;&nbsp;&nbsp; Practical 2  <br> &nbsp;&nbsp;&nbsp;&nbsp; reading in your data, basic data wrangling [practical 1.2](https://hughesevoanth.github.io/intro_to_r/day1/practical_1.2.html) [solutions 1.2](https://hughesevoanth.github.io/intro_to_r/day1/solutions_1.2.html)| 1430 - 1530 | David & others|
-|Oct 16th, 2024| (3) Introduction to plots (base R)| 0900-1000|David Hughes|
-||Practical 3 <br> &nbsp;&nbsp;&nbsp;&nbsp; read in some data and make some summary plots|1015-10:45|David, Rodrigo & others|
-|Oct 16th, 2024| (4) Writing scripts |1045-1145| David Hughes|
-||Practical 4 <br> &nbsp;&nbsp;&nbsp;&nbsp; writing your first script|1300-1345| David, Rodrigo & others|
-|Oct 16th, 2024| (5) Ah an ERROR! Troubleshooting your code and scripts| 1345-1430 |David Hughes|
-||Practical 5 <br> &nbsp;&nbsp;&nbsp;&nbsp; fix this script|1430-1530| David, Rodrigo & others|
+|Oct 16th, 2024| (3) A review of day 1 [web](https://hughesevoanth.github.io/intro_to_r/day2/01_a_review_of_day1.html)  | 0900-1000|David Hughes|
+|Oct 16th, 2024| (4) Writing scripts [web](https://hughesevoanth.github.io/intro_to_r/day2/02_writing_scripts.html) |1015-1100| David Hughes|
+||Practical 3 <br> &nbsp;&nbsp;&nbsp;&nbsp; writing your first script [practical](https://hughesevoanth.github.io/intro_to_r/day2/03_practical_2.1.html) [solutions](https://hughesevoanth.github.io/intro_to_r/day2/04_solutions_2.1.html)|1115-1200| David, Rodrigo & others|
+|Oct 16th, 2024| (5) Ah an ERROR! Troubleshooting your code and scripts [web](https://hughesevoanth.github.io/intro_to_r/day2/05_troubleshooting_errors.html)| 1300-1400 |David Hughes|
+||Practical 4 <br> &nbsp;&nbsp;&nbsp;&nbsp; fix this script [practical](https://hughesevoanth.github.io/intro_to_r/day2/06_practical_2.2.html) [solutions](https://hughesevoanth.github.io/intro_to_r/day2/07_solutions_2.2.html)|1415-1530| David, Rodrigo & others|
 |Oct 23rd, 2024| (6) Data Wrangling  |0900-1000| David Hughes|
-||Practical 6 <br> &nbsp;&nbsp;&nbsp;&nbsp; working with multiple data files and big data|1015-1100| David, Terry & others|
+||Practical 5 <br> &nbsp;&nbsp;&nbsp;&nbsp; working with multiple data files and big data|1015-1100| David, Terry & others|
 |Oct 23rd, 2024| (7) Efficiency - loops, (s/l/m/r/v/t)applys, and parallelizing|1100-1145| David Hughes|
-||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; loops and the plethora of apply functions|1300-1330| David, Terry & others|
+||Practical 6 <br> &nbsp;&nbsp;&nbsp;&nbsp; loops and the plethora of apply functions|1300-1330| David, Terry & others|
 |Oct 23rd, 2024| (8) Introduction to RMarkdown and Notebooks & more that RStudio has to offer |1330-1430| David Hughes|
 |Oct 30th, 2024| (9) Introduction to the tidyverse |0900-1000| David Hughes|
-||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; diving head first into all that is the tidyverse |1000-1145| David, Kaja & others|
+||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; diving head first into all that is the tidyverse |1000-1145| David, Kaja & others|
 |Oct 30th, 2024| (10) Introduction to ggplot |1300-1345| David Hughes|
-||Practical 9 <br> &nbsp;&nbsp;&nbsp;&nbsp; pivot_longer(), layers, aesthetics, and all the ggplot glory |1345-1430| David, Kaja & others|
+||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; pivot_longer(), layers, aesthetics, and all the ggplot glory |1345-1430| David, Kaja & others|
 |Oct 30th, 2024| (11) Write your own functions |1430-1500| David Hughes|
-||Practical 10 <br> &nbsp;&nbsp;&nbsp;&nbsp; Now I am coder - I wrote my own function :-) |1500-1530| David, Kaja & others|
+||Practical 9 <br> &nbsp;&nbsp;&nbsp;&nbsp; Now I am coder - I wrote my own function :-) |1500-1530| David, Kaja & others|
 
 ## Pre-course preparation 
 

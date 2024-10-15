@@ -1,0 +1,311 @@
+---
+title: "Writing Scripts"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom.scss]
+    footer: "Writing scripts"
+    logo: "../images/pb_white.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Outline
+
+  - organizing your project directory
+  - starting a new R script
+  - what to think about when starting a script
+  - a scripts header
+  - making your code easier to read
+  - saving scripts
+  - what makes for a bad script?
+  
+## Your project directory {.smaller}
+
+<br>
+
+  - It is advisable to consistently use a clear, well defined, project directory structure for all projects. 
+  - If possible it is good to make this structure uniform across groups or institutions. 
+  - Such a structure may look include the following directories:
+  
+```r
+  - data
+  - results
+  - scripts
+```
+
+## An example project directory tree structure
+
+```r
+myproject
+├── data
+│   ├── raw
+│   └── processed
+├── docs**
+│   ├── files.yaml
+│   ├── qc.md
+│   └── user_guide.md
+├── results
+│   ├── figures
+│   └── tables
+├── scripts
+│   └── github_repo_name +
+│       ├── parameters
+│       │   └── my_parameters.sh
+│       ├── README.md
+│       └── .gitignore
+
+```
+<br>
+
+    ** If the project is very large or contains many files in the data directory it may be advisable to include a docs directory that includes additional information describing each data file, any quality control procedures, and perhaps a user guide. All useful for a future you coming back to this project in a couple of years, or any new user of the project.
+    
+    + Inside the scripts directory may sit the directory for a github repository
+    
+## Start a new R script
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+Start a new R Script by selecting:
+
+    File -> New File -> R Script
+
+ - The "source" area of the RStudio is effectively a text editor.
+ - This is where you will write your code.
+ - And this is where you can send code to the console to be run by R. 
+ 
+:::
+:::{.column width="40%"}
+![](../images/new_r_script.png){width="80%"}
+:::
+::::
+
+
+## Commenting
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+<br>
+
+  - Lines in the R script that start with a hash "#" are ignored by R.
+  
+  - They provide a means to annotate your code
+
+:::
+:::{.column width="40%"}
+![](../images/comments.png){width="80%"}
+:::
+::::
+
+
+
+## Defining Clear Sections in your code
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+<br>
+
+  - It is good practice to insert clear sections
+  
+  - These can be navigated to in R Studio
+
+:::
+:::{.column width="40%"}
+![](../images/sections.png){width="80%"}
+:::
+::::
+
+
+## Why, What, and How?
+
+<br>
+
+- Why am I writing this R script?
+
+- What do I need to run this R script?
+
+- How am I going to structure or write this script?
+
+## Why ?
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+<br>
+
+  - Give the script a clear name.
+      - perhaps add a numeric to the script name to order the scripts in your project
+  
+  - State the scripts objective(s) or purpose
+
+:::
+
+:::{.column width="40%"}
+![](../images/why.png){width="80%"}
+:::
+::::
+
+
+## What ?
+:::: columns
+:::{.column width="45%" .smaller}
+What do I need to write this script?
+
+  - Is there any data that needs to be read in?
+  - Do I need a parameter file to hide my directory paths?
+  - Are there any advanced functions that I need?
+  - Are there any R packages that I require?
+
+:::
+
+:::{.column width="50%"}
+In the scripts directory it is often good to have a parameters folder.
+
+    - This folder can hold a parameter file
+    
+```r
+my_project_dir="/Users/personX/Library/CloudDrive/secret/important/new/study/"
+```
+:::
+:::: 
+
+## How?
+
+:::: columns
+:::{.column width="40%" .smaller}
+<br><br>
+Script structure can be clear written out in the script.
+:::
+:::{.column width="60%"}
+![](../images/structure.png){width="80%"}
+:::
+::::
+
+## How to write *GOOD* scripts {.smaller}
+
+- Consistency
+    - find your style for naming variables, functions, and files
+    - for ex: use snake_case for variables and TitleCase for column names.
+- Organization
+    - include libraries and sourced functions and files at the top of your script
+    - add authors, dates, a description, and possibly an outline to your script
+    - include section titles
+    - break your code into small, manageable pieces
+    - keep all source files in one parental directory
+    - use well structured (sub)directories to maintain data, results, and scripts
+    - use relative paths or a parameter file to access directories and files
+
+## How to write *GOOD* scripts cont'd {.smaller}
+- Avoid repetition
+    - use loops or functions to avoid repetitious code
+- Document
+    - everyone has there own style but always include
+        - authors, dates, a description, and sections
+- Test
+  - have others use your code
+  - simulate data that will look like yours to run including error
+  - sub-set large data sets to run as a test case for your code
+      - this is to test your code, not your research question
+
+
+## How to write *GOOD* scripts cont'd {.smaller}
+
+- Version Control
+  - consider using git to keep track of your changes
+- Start Fresh
+  - DO NOT SAVE YOUR WORKSPACE
+  - start with a clean environment each time you come back to your scripts
+
+## Consistency
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+<br>
+
+ - Choose a style
+ 
+ - Spacing
+ 
+ - Indentation
+:::
+:::{.column width="60%"}
+
+style
+```{r}
+a_var = 1:10
+a.var = 1:10
+AVar = 1:10
+aVar = 1:10
+```
+spaces
+```{r}
+x = c(1,2,3,4,5)
+x = c(1, 2, 3, 4, 5)
+x = c(1,2,   3,    4,    5)
+```
+indentations
+```{r, eval=FALSE}
+plot(x = weight, y = height, xlab = "weight", ylab = "height", main = "Title", col = "red")
+plot(x = weight, y = height, 
+     xlab = "weight", 
+     ylab = "height", 
+     main = "Title", 
+     col = "red")
+```
+
+:::
+::::
+
+## Saving your script
+
+- Give your scripts good names
+
+```r
+power_analysis.R
+01_power_analysis.R
+```
+
+- Save your scripts regularly !!
+  - learn your hot keys
+    - Command + S on a Mac
+    - Ctrl + S
+
+## What is wrong with this script?
+<div style="text-align: center;">
+![](../images/bad_script.png){width="70%"}
+</div>
+
+## What is wrong with this script? cont'd
+
+:::: columns
+:::{.column width="40%" .smaller}
+
+<br>
+
+- no title
+- no author or dates
+- no description
+- no sections
+- no comments of any kind
+- poor spacing
+
+:::
+
+:::{.column width="60%"}
+![](../images/bad_script.png){width="80%"}
+:::
+::::

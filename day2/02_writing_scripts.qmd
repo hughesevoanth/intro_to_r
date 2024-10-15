@@ -87,7 +87,9 @@ Start a new R Script by selecting:
  
 :::
 :::{.column width="60%"}
-![](../images/new_r_script.png){width="100%"}
+<div style="text-align: center;">
+![](../images/new_r_script.png)
+</div>
 :::
 ::::
 
@@ -104,8 +106,10 @@ Start a new R Script by selecting:
   - They provide a means to annotate your code
 
 :::
-:::{.column width="40%"}
-![](../images/comments.png){width="80%"}
+:::{.column width="60%"}
+<div style="text-align: center;">
+![](../images/comments.png)
+</div>
 :::
 ::::
 
@@ -123,8 +127,10 @@ Start a new R Script by selecting:
   - These can be navigated to in R Studio
 
 :::
-:::{.column width="40%"}
-![](../images/sections.png){width="80%"}
+:::{.column width="60%"}
+<div style="text-align: center;">
+![](../images/sections.png)
+</div>
 :::
 ::::
 
@@ -153,8 +159,10 @@ Start a new R Script by selecting:
 
 :::
 
-:::{.column width="40%"}
-![](../images/why.png){width="80%"}
+:::{.column width="60%"}
+<div style="text-align: center;">
+![](../images/why.png)
+</div>
 :::
 ::::
 
@@ -190,7 +198,9 @@ my_project_dir="/Users/personX/Library/CloudDrive/secret/important/new/study/"
 Script structure can be clear written out in the script.
 :::
 :::{.column width="60%"}
-![](../images/structure.png){width="80%"}
+<div style="text-align: center;">
+![](../images/structure.png)
+</div>
 :::
 ::::
 
@@ -286,7 +296,7 @@ power_analysis.R
 
 ## What is wrong with this script?
 <div style="text-align: center;">
-![](../images/bad_script.png){width="70%"}
+![](../images/bad_script.png){width="80%"}
 </div>
 
 ## What is wrong with this script? cont'd
@@ -306,6 +316,8 @@ power_analysis.R
 :::
 
 :::{.column width="60%"}
-![](../images/bad_script.png){width="80%"}
+<div style="text-align: center;">
+![](../images/bad_script.png){width="90%"}
+</div>
 :::
 ::::

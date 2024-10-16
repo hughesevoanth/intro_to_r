@@ -1,12 +1,12 @@
 ---
-title: "A quick review of day 1"
+title: "Troubleshooting Errors"
 author: "David A Hughes"
 format: 
   revealjs:
     slide-number: true
     aspect-ratio: 16:9
     theme: [default, ../css/custom.scss]
-    footer: "A review of day 1"
+    footer: "Ah an ERROR!"
     logo: "../images/pb_white.png"
     scrollable: true
     chalkboard: true
@@ -20,341 +20,143 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## Vectors
+## Outline
 
-Define vectors
+  - common errors
+  - some examples
+  - unhelpful messages
 
-```{r}
-x = c(1,2,3,4,5,6,7,8,9,10) # use c(), a function, to combine values into a vector
-x = 1:10. ## use ":" as a short cut to make a sequence of values
-y = seq(from = 101, to = 110, by = 1) ## us seq, a function, to make a sequence of values
-presidents = c("Washington","Adams","Jefferson","Madison","Monroe") ## You can place strings into a vector
+## Common Errors
+
+[Noam Ross](https://www.noamross.net) has compiled some common errors for us.
+
+- He is director of [rOpenSci](https://ropensci.org)
+
+::: {style="text-align: center;"}
+
+![](https://cdn.jsdelivr.net/gh/noamross/noamross.net@164b105f888b68b0c9036d0b5e020a39ef9f5355/static/assets/img/header-pic.jpg){width="50%"}
+:::
+
+
+
+## Common Errors cont'd{.smaller}
+
+Dr. Ross has identified [9604 unique errors](https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md) in Stack Overflow.
+
+    - The most common are:
+  
+  | **trigram** | **freq** |
+  |:--------------|:---------|
+  | not find function  |  311 |
+  | Error in if  |  308 |
+  | could not find  |  300 |
+  | in eval(expr, envir,  |  298 |
+  | eval(expr, envir, enclos)  |  291 |
+  | envir, enclos) :  |  287 |
+  | Error in eval(expr,  |  286 |
+  |  = TRUE) :  |  249 |
+  | value where TRUE/FALSE  |  239 |
+  |  missing value where  |  230 |
+  | : cannot open  |  216 |
+  | : missing value  |  214 |
+  | enclos) : object  |  211 |
+  | where TRUE/FALSE needed  |  201 |
+  | : unable to  |  194 |
+
+## could not find function
+
+Error: could not find function "some_function" is this most common error. 
+
+  - generally this is a product of misspelling or not loading the necessary library
+
+```{r, eval = FALSE}
+my_function()  # 'my_function' has not been defined
 ```
 
-Perform arithmetic with vectors
+    Error in my_function() : could not find function "my_function"
 
-```{r}
-x + y ## addition
-x - y ## subtraction
-x * y ## multiplication  
-x / y ## division
-log(x) + sqrt(y) ## logging and square roots
-```
+## Error in if
 
-## Vectors cont'd
-
-Add names to elements in a vector object
-
-```{r}
-x = rnorm(n = 5, mean = 27, sd = 3.5) ## sample 5 observations from a random normal distribution
-presidents = c("Washington","Adams","Jefferson","Madison","Monroe")
-names(x) = presidents
-```
-
-extract elements or subsets of a vector
-```{r}
-x[c(2,4)] ## extract by position
-x[c("Adams","Madison")] ## extract by name
-```
-
-Subset and perform arithmetic
-
-```{r}
-x[c(2,4)] + 100
-```
-
-
-## Matrixes
-
-Define a matrix
-
-```{r}
-mymatA = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE) ## use, matrix(), a function to make a matrix
-mymatA
-
-mymatB = matrix(1:10, nrow = 5, ncol = 2, byrow = FALSE) ## fill the matrix by column rather than row
-mymatB
-```
-
-## Matrices cont'd
-
-how many rows and columns are in the matrix
-
-```{r}
-dim(mymatA) ## use the function dim() to return the dimensions
-nrow(mymatA) ## how many rows ?
-ncol(mymatA) ## how many columns ?
-```
-
-## Matrices cont'd
-
-Add row and column names to a matrix
-```{r}
-mymatA = matrix(1:10, nrow = 5, ncol = 2, byrow = TRUE,
-                dimnames = list(presidents, c("height","weight") ) ) 
-rownames(mymatB) = presidents
-colnames(mymatB) = c("height","weight")
-mymatA
-```
-
-## Matrices cont'd
-
-Subset a matrix[ROWS, COLS]
-```{r}
-mymatA["Washington", ] ## extract the first row named "Washington"
-mymatA[1, ] ## extract the first row
-mymatA[, "weight"] ## extract the second column named "weight"
-mymatA[, 2] ## extract the second column
-mymatA[c("Washington","Adams"), "height"] ## extract the height of Washington and Adams
-mymatA[1:2, 1]
-```
-
-## Matrices cont'd
-
-Matrix arithmetic
-```{r}
-mymatA[, "weight"] / mymatA[, "height"]^2 ## estimate a new variable from two columns of data
-mymatA + mymatB ## perform addition across to equal sized matrices
-t(mymatA) * t(mymatB) ## transpose both matrices and perform multplication
-```
-
-
-## Data frames
-
-Define a data frame
-
-```{r}
-my_presidents = data.frame(names = presidents, height = mymatA[, "height"], weight = mymatA[, "weight"])
-```
-
-Check the structure of the data frame
-
-```{r}
-str(my_presidents)
-```
-
-How many rows and columns
-
-```{r}
-dim(my_presidents) ## query both dimensions
-nrow(my_presidents) ## query the number of rows
-ncol(my_presidents) ## query the number of columns
-```
-
-## Data frames cont'd
-
-Extract a column of data
-
-```{r}
-my_presidents[, "height"] 
-my_presidents$height ## this is the same as the line above
-```
-
-Subset certain rows of the data frame
-
-```{r}
-my_presidents[c("Adams","Madison"),] ## extract specific rows by name
-w = which(my_presidents$weight > 6) ## find the presidents with a weight larger than 6
-my_presidents[w,] ## extract all data for those presidents who have a weight larger than 6
-```
-
-## Data frames cont'd
-
-Arithmetic
-
-```{r}
-w = which(my_presidents$weight > 6) ## find the presidents with a weight larger than 6
-my_presidents[w,] ## extract all data for those presidents who have a weight larger than 6
-my_presidents$weight[w] / my_presidents$height[w]^2 ## estimate a new variable from the subsetted data
-```
-
-
-## Lists
-
-place numerous R objects into a single object
-
-```{r}
-mylist = list( x = x, # a vector
-               mymatA = mymatA, # a matrix
-               my_presidents = my_presidents # a data frame
-               ) ## use the function list() to define a list
-mylist
-```
-
-## Lists cont'd 
-
-each element of the list can carry a name
-```{r}
-names(mylist)
-```
-
-you can rename them
-```{r}
-names(mylist) = c("objV","objM","objD")
-```
-
-then extract the object by the name
-```{r}
-mylist[["objV"]] ## use the [[]] syntax
-mylist$objV ## or extract the desired object with the $ symbol
-```
-
-## Loops and apply
-
-for loops
-
-```{r}
-for(i in 1:5){
-  cat(paste0("I am now running iteration ", i, "\n"))
+"Error in if" generally means the logical statement in "if (XXX) { ..." is not yielding a logical value. Most of these have missing value where TRUE/FALSE needed, meaning that the variable in XXX has NA in it.
+  
+```{r, eval = FALSE}
+x <- 1:5
+if (x) {  # This will generate an error because 'x' is a numeric vector, not a logical value
+  print("This won't print")
 }
 ```
 
+    Error in if (x) { : the condition has length > 1
 
-apply()
+```{r, eval = FALSE}
+if (NULL) {  # NULL is not a valid logical value for an if statement
+  print("This won't print")
+}
+```
+
+    Error in if (NULL) { : argument is of length zero
+  
+## could not find
+
+Similar to the issue of "could not find function", but typically an object can not be found. 
+
+  - generally this is a product of not defining an object.
+
+```{r, eval = FALSE}
+print(my_variable)  # 'my_variable' has not been defined
+```
+
+    Error: object 'my_variable' not found
+  
+## object of class
+
+This is not in the top list above but is common. 
+
+  - generally the product of trying to run a function on an object of the wrong class.
+  
+```{r, eval = FALSE}
+x <- 1:10  # Numeric vector
+summary.lm(x)  # `summary.lm()` expects an object of class "lm" (linear model)
+```
+
+    Error in z$rank : $ operator is invalid for atomic vectors
+
+## subscript out of bounds
+
+This is another common error and is the product of trying to access an element of a vector or list that is not there.
+
+```{r, eval = FALSE}
+m <- matrix(1:9, nrow = 3, ncol = 3)  # A 3x3 matrix
+m[4, 2]  # Try to access the 4th row, which doesn't exist
+```
+
+    Error in m[4, 2] : subscript out of bounds
+
+```{r, eval = FALSE}
+lst <- list(a = 1, b = 2)  # A list with two elements
+lst[[3]]  # Try to access the 3rd element, which doesn't exist
+```
+
+    Error in lst[[3]] : subscript out of bounds
     
-    apply() is a function that allows you to apply the same function over 
-    rows (1) or 
-    columns (2) 
-    of a matrix or data frame
+## Most error messages are not helpful
 
-```{r}
-mymeans = apply(mylist$objD[,2:3], 2, mean) ## apply the function mean() to the numeric columns (2) of the data frame 
-mymeans
-```
+What should you do if the error is not clear?
 
+  - Google
+  - Stack Overflow
+  - LMM
+  
+  - Try searching different parts of the error message
+  - Run your code line by line to find the error.
 
-## Loops and apply cont'd
+## Errors can be challenging
 
-lapply() is a function that iterates over a list of vector
-
-```{r}
-out = lapply(1:3, function(x){
-  x + 10
-})
-out
-unlist(out) ## convert a list into a vector
-```
-
-sapply() is the same as lapply but it returns a vector
-
-```{r}
-out = sapply(1:3, function(x){
-  x + 10
-})
-out
-```
-
-
-## Loops and apply cont'd
-
-Another example of using lapply
-
-```{r}
-alist = list(A = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ), 
-             B = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ), 
-             C = data.frame(height = rnorm(10, 1.75, 0.25) , weight = rnorm(10, 91, 1) ))
-bmi = lapply(alist, function(x){
-  x$weight/x$height^2
-})
-bmi
-```
-
-estimate mean bmi
-
-```{r}
-sapply(bmi, mean)
-```
-
-
-## Plots
-
-Scatter plots
-
-```{r, fig.width = 5, fig.height = 3}
-x = 1:25
-y = 1:25
-plot(x,y, 
-     col = rainbow(length(x)), ## color of plotted elements
-     pch = 1:25, ## shape of plotted elements
-     bg = "grey50",
-     cex = 1.5, ## size of plotted elements
-     xlab = "My X Variable", ylab = "My Y Variable", main = "Plot shapes and colors")
-```
-
-## Plots cont'd
-
-:::: columns
-:::{.column width="50%"}
-Using data from the iris package 
-
-```{r}
-iris[1:2, ] |> knitr::kable() |> kableExtra::kable_material_dark()
-```
-:::
-
-:::{.column width="50%"}
-```{r}
-plot(iris$Sepal.Length, iris$Petal.Length, 
-     col = iris$Species, 
-     cex = 2, pch = c(15,19,4)[iris$Species],
-     xlab = "Sepal Length", 
-     ylab = "Petal Length", 
-     main = "iris data set")
-legend("bottomright", 
-       legend = unique(iris$Species), 
-       pch = c(15,19,4), col = 1:3 )
-fit = lm(Petal.Length ~ Sepal.Length, 
-          data = iris)
-abline(fit, 
-       lwd = 3, lty = 2, 
-       col = "dodgerblue")
-```
-:::
-
-::::
-
-## Plots cont'd
-
-Histograms
-
-:::: columns
-:::{.column width="50%"}
- 
-```{r, fig.width = 5, fig.height = 4.5}
-pcol = wesanderson::wes_palette("Darjeeling1", 2)
-par(mfrow=c(2,1), mar = c(5,2,1,0))
-hist(iris$Sepal.Length, xlab = "Sepal Length", main = "", col = pcol[1])
-hist(iris$Petal.Length,  xlab = "Petal Length",main = "", col = pcol[2])
-```
-:::
-:::{.column width="50%"}
-
-```{r, fig.width = 5, fig.height = 4.5}
-pcol = wesanderson::wes_palette("FrenchDispatch", 2)
-par(mfrow=c(2,1), mar = c(5,2,1,0))
-hist( moosefun::rntransform(iris$Sepal.Length), main = "", xlab = "RNT Sepal Length", col = pcol[1])
-hist(moosefun::rntransform(iris$Petal.Length), main = "",  xlab = "RNT Petal Length", col = pcol[2])
-```
-
-:::
-::::
-
-## Plots cont'd
-
-Box Plots
-
-```{r, fig.height = 4, fig.width = 3}
-sex = sample(0:1, 50, replace = TRUE) # sex = rbinom(50, 1, 0.5)
-height = sqrt(0.25) * sex + rnorm(50, 0, sqrt(1-0.25) )
-height = as.vector(scale(height, center = TRUE, scale = TRUE)) * 0.25 + 1.75
-mydata = data.frame(sex = sex, height = height)
-boxplot(height ~ sex, data = mydata, col = RColorBrewer::brewer.pal(3, "Set1")[1:2] )
-```
-
-
-
-
-
-
-
-
+Fret Not: 
+<br>
+The good news is that there are many ways to solve the problem.
+  
+  - Ask for help
+  - Internet
+  - Tear your code apart
+  - Try a different approach

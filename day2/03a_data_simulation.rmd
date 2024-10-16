@@ -1,0 +1,230 @@
+---
+title: "Simulating data for practical 2.1"
+author: "PBRC: David A Hughes"
+date: "Oct 16th, 2024"
+output: html_document
+---
+
+In this script I am going to simulate a data set for use in the PBRC Introduction to R Short Course that will be used in practical 2.1.  
+
+I will be simulating:
+
+1. height
+2. weight
+3. sex
+4. age
+5. 10 proteins
+
+### load needed libraries
+
+```{r}
+library(tidyverse)
+library(faux)
+```
+
+
+### set a seed
+
+```{r}
+set.seed(151024)
+```
+
+
+### Simulate sex and age
+
+```{r}
+sex = rbinom(500, 1, 0.4)
+age = rnorm(500, 35, 6)
+```
+
+
+### Simulate height and weight
+
+#### height
+```{r}
+h = rnorm(500, 1.62, 0.08)
+height = 0.13*sex + h
+```
+
+
+#### weight
+
+```{r}
+w = rnorm(500, 0, sqrt(1-0.33))
+weight = sqrt(0.33)* as.vector( scale(height) ) + w
+## make the average weight 77.5 kg (average for women) with a SD of 0.25
+weight = as.vector( scale(weight) ) * 5 + 77.5
+## add a sex effect
+weight = 12.5*sex + weight
+summary(weight)
+```
+
+
+```{r}
+cat(paste0("Weight Summary for males\n"))
+summary(weight[sex == 1])
+
+cat(paste0("\nWeight Summary for females\n"))
+summary(weight[sex == 0])
+```
+
+
+### estimate bmi
+```{r}
+bmi = weight / height^2
+summary(bmi)
+```
+
+
+```{r}
+cat(paste0("BMI Summary for males\n"))
+summary(bmi[sex == 1])
+
+cat(paste0("\nBMI Summary for females\n"))
+summary(bmi[sex == 0])
+```
+
+### Simulate some molecular traits (proteins?)
+
+```{r}
+Cmat = read.table("feature_correlation_matrix.txt", header = TRUE)
+Cmat = as.matrix(Cmat)
+mol_traits = rnorm_multi(n = 500, vars = 10, mu = 0, sd = 1, r = Cmat)
+
+# MT_mat = cor(mol_traits)
+```
+
+### Add some variance explained by sex, age, and BMI to the molecular traits
+
+```{r}
+x = mol_traits[,1]
+
+## sample variance explained from a uniform distribution
+sex_varexp = runif(1, min = 0, max = 0.2)
+age_varexp = runif(1, min = 0, max = 0.25)
+bmi_varexp = sqrt(runif(1, min = 0.05, max = 0.5))
+
+sex_effect = sqrt(sex_varexp); if(sample(0:1, 1) == 0){ sex_effect = sex_effect * -1}
+age_effect = sqrt(age_varexp); if(sample(0:1, 1) == 0){ age_varexp = age_varexp * -1}
+bmi_effect = sqrt(bmi_varexp); if(sample(0:1, 1) == 0){ bmi_varexp = bmi_varexp * -1}
+
+## add the sex, age, and bmi effects
+x = sex_effect * sex + 
+  age_effect * as.vector( scale(age) ) + 
+  bmi_effect * as.vector( scale(bmi) ) + 
+  x
+x = as.vector( scale(x) )
+
+## run a linear model
+fit = lm(x ~ sex + age + bmi)
+
+## estimate the variance explained
+a = anova(fit)
+estimated_etasq = ( a[,2] / sum(a[,2]) )[1:3]
+varexp = data.frame(simulated = c(sex_varexp, age_varexp, bmi_varexp),
+                    estimated = estimated_etasq )
+# varexp
+```
+
+### write a function
+
+```{r}
+add_effects = function(x){
+  ## sample variance explained from a uniform distribution
+  # sex_varexp = runif(1, min = 0, max = 0.1)
+  sex_varexp = rbeta(1, shape1 = 1, shape2 = 20)
+  # age_varexp = runif(1, min = 0, max = 0.05)
+  age_varexp = rbeta(1, shape1 = 1, shape2 = 50)
+  # bmi_varexp = runif(1, min = 0, max = 0.05)
+  bmi_varexp = rbeta(1, shape1 = 1, shape2 = 50)
+  
+  sex_effect = sqrt(sex_varexp); if(sample(0:1, 1) == 0){ sex_effect = sex_effect * -1}
+  age_effect = sqrt(age_varexp); if(sample(0:1, 1) == 0){ age_effect = age_effect * -1}
+  bmi_effect = sqrt(bmi_varexp); if(sample(0:1, 1) == 0){ bmi_effect = bmi_effect * -1}
+  
+  ## add the sex, age, and bmi effects
+  x = sex_effect * sex + 
+    age_effect * as.vector( scale(age) ) + 
+    bmi_effect * as.vector( scale(bmi) ) + 
+    as.vector( scale(x) )
+  
+  x = as.vector( scale(x) )
+  
+  ## return the variable
+  return(x)
+
+}
+```
+
+### generate new molecular traits with some random effects added
+
+```{r}
+set.seed(161024)
+new_mol_traits = apply(mol_traits, 2, add_effects)
+```
+
+### test what those effects are
+
+```{r}
+e = t( sapply(1:ncol(new_mol_traits), function(i){
+  x = new_mol_traits[,i]
+  fit = lm(x ~ sex + age + bmi )
+  coef = summary(fit)$coef
+  beta = coef[2:4,1]; names(beta) = paste0("beta_", rownames(coef)[2:4])
+  se = coef[2:4,2]; names(se) = paste0("se_", rownames(coef)[2:4])
+  p = coef[2:4,4]; names(p) = paste0("p_", rownames(coef)[2:4])
+  out = c(beta, se, p)
+  return(out)
+  
+}) 
+)
+
+e |> knitr::kable() |> kableExtra::kable_classic()
+```
+
+
+## how well does the correlation structure among features hold?
+
+```{r}
+m = data.frame(old = cor(mol_traits)[,1], new = cor(new_mol_traits)[,1] )
+```
+
+## Add some missingness to the new_mol_traits
+
+```{r}
+set.seed(161024)
+temp = new_mol_traits
+for(i in 1:10){
+  count = sample(c(0,5,10,25), 1, prob = c(0.5, 0.2, 0.15, 0.15))
+  w = sample(1:nrow(temp), count)
+  temp[w,i] = NA
+}
+
+apply(temp, 2, function(x){sum(is.na(x))})
+```
+
+
+## Define the simulated data frame
+
+```{r}
+features = as.data.frame(temp)
+mydata = data.frame(sex = sex, 
+                    age = age, 
+                    height = height, 
+                    weight = weight)
+mydata = cbind(mydata, features)
+```
+
+## write the data to file
+
+```{r}
+write.table(mydata, file = "simulated_data.txt", 
+            row.names = FALSE, 
+            col.names = TRUE,
+            sep = "\t",
+            quote = FALSE)
+```
+
+
+
+

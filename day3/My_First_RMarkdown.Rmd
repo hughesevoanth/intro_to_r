@@ -16,7 +16,6 @@ In this exercise I am **learning** what *R Markdown* can do for me.
 1. What is it capable of doing? 
 2. Why should I be using it?
 
-
 ### Head the iris data set
 
 ```{r cars}

@@ -343,12 +343,13 @@ David A Hughes
 <section id="what-is-rmarkdown" class="slide level2">
 <h2>What is RMarkdown?</h2>
 <div class="center">
-<p><img data-src="../images/rmarkdown.ong" style="width:30.0%"></p>
+<p><img data-src="../images/rmarkdown.png" style="width:20.0%"></p>
 </div>
 <p><br></p>
 <ul>
 <li><p><a href="https://rmarkdown.rstudio.com/">RMarkdown</a> is a file format and a scripting and author framework to run analyses and generate reports for your analyses.</p></li>
 <li><p>It is a powerful tool for integrating code, results, and narrative into a single, reproducible document.</p></li>
+<li><p>You can find more about RMarkdown <a href="https://rmarkdown.rstudio.com/">here</a> and <a href="https://bookdown.org/yihui/rmarkdown/">here</a>.</p></li>
 </ul>
 </section>
 <section id="what-is-rmarkdown-contd" class="slide level2">
@@ -361,10 +362,10 @@ David A Hughes
 <li>html</li>
 <li>pdf</li>
 <li>word docs</li>
-<li>html slides (presentations) - such as this one.</li>
+<li>html slides (presentations) - such as this one written, technically, in <a href="https://quarto.org/docs/presentations/revealjs/">Quarto</a>.</li>
 <li>handouts</li>
-<li>books</li>
-<li>dashboards</li>
+<li><a href="https://bookdown.org">books</a></li>
+<li>dashboards (<a href="https://shiny.posit.co">Shiny</a>)</li>
 <li>articles</li>
 <li>websites</li>
 </ul></li>
@@ -404,14 +405,14 @@ David A Hughes
 </div>
 </div>
 </section>
-<section id="what-is-markdown" class="slide level2">
+<section id="what-is-markdown" class="slide level2 smaller">
 <h2>What is Markdown?</h2>
 <p><a href="https://www.markdownguide.org">Markdown</a> is a markup language with plain text formatting that can be converted into HTML, PDF, Word, or other document formats. It uses a simple syntax to create headers, lists, tables, links, and more.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="../images/Markdown1.png" style="width:100.0%"></p>
+<p><img data-src="../images/Markdown1.png" style="width:80.0%"></p>
 </div><div class="column" style="width:50%;">
-<p><img data-src="../images/Markdown2.png" style="width:100.0%"></p>
+<p><img data-src="../images/Markdown2.png" style="width:80.0%"></p>
 </div>
 </div>
 </section>
@@ -430,13 +431,13 @@ David A Hughes
 <pre><code>File &gt; New File &gt; R Markdown</code></pre>
 
 <img data-src="../images/NewRmd_step1.png" class="r-stretch"></section>
-<section id="to-start-a-new-rmarkdown-file-contd-1" class="slide level2">
+<section id="to-start-a-new-rmarkdown-file-contd-1" class="slide level2 smaller">
 <h2>To start a new RMarkdown file cont’d 1</h2>
 <p>You can make Documents, Presentations, or a Shiny app. We will continue with “Document”.</p>
 <pre><code>Give your document a title and chose the output format as HTML.</code></pre>
 
 <img data-src="../images/NewRmd_step2.png" class="r-stretch"></section>
-<section id="to-start-a-new-rmarkdown-file-contd-2" class="slide level2">
+<section id="to-start-a-new-rmarkdown-file-contd-2" class="slide level2 smaller">
 <h2>To start a new RMarkdown file cont’d 2</h2>
 <pre><code>The new R Markdown file starts you off with some examples of how to use it. </code></pre>
 
@@ -444,15 +445,17 @@ David A Hughes
 <li>Let us “Knit” this file to render it.</li>
 </ul>
 </section>
-<section id="to-start-a-new-rmarkdown-file-contd-3" class="slide level2">
+<section id="to-start-a-new-rmarkdown-file-contd-3" class="slide level2 smaller">
 <h2>To start a new RMarkdown file cont’d 3</h2>
 <p>You can now see the rendered file</p>
 
 <img data-src="../images/NewRmd_step4.png" class="r-stretch"></section>
 <section id="reviewing-the-elements-of-the-rmarkdown-file" class="slide level2">
 <h2>Reviewing the elements of the RMarkdown file</h2>
-
-<img data-src="../images/NewRmd_step3a.png" class="r-stretch"></section>
+<div class="center">
+<p><img data-src="../images/NewRmd_step3a.png"></p>
+</div>
+</section>
 <section>
 <section id="practical-3.1" class="title-slide slide level1 center">
 <h1>Practical 3.1</h1>
@@ -461,24 +464,42 @@ David A Hughes
 <section id="lets-practice" class="slide level2 smaller scrollable">
 <h2>Let’s practice !</h2>
 <ul>
-<li>We are going to work with the iris data set. It is already available when you start R.</li>
-</ul>
-<ol type="1">
+<li><p>We are going to work with the iris data set. It is already available when you start R.</p></li>
+<li><ol type="1">
 <li>Start a new Rmarkdown file</li>
+</ol></li>
+<li><ol start="2" type="1">
 <li>Title it: <strong>“My First RMarkdown File”</strong></li>
+</ol></li>
+<li><ol start="3" type="1">
 <li>We want to render to HTML</li>
+</ol></li>
+<li><ol start="4" type="1">
 <li>Describe what you will be doing in this “report”. Think about the good coding practices we previously discussed.</li>
+</ol></li>
+<li><ol start="5" type="1">
 <li>In your first code chunk ( [Cmd+Option+I] on a Mac) <em>head()</em> the iris data set.</li>
+</ol></li>
+<li><ol start="6" type="1">
 <li>In your second code chunk: use the <em>apply()</em> function to estimate the <em>mean()</em> of the numeric columns.</li>
+</ol></li>
+<li><ol start="7" type="1">
 <li>Make a scatter <strong>plot</strong>, illustrating the relationship between <em>Sepal.Width</em> and <em>Petal.Length</em>. Color each observation by <em>Species</em></li>
+</ol></li>
+<li><ol start="8" type="1">
 <li>Save your file</li>
+</ol></li>
+<li><ol start="9" type="1">
 <li>Render your document by clicking on “Knit”.</li>
-</ol>
+</ol></li>
+</ul>
 </section>
 <section id="what-should-our-exercise-look-like" class="slide level2">
 <h2>What should our exercise look like?</h2>
-<p>My Rmarkdown file, for this exercise, is below and <a href="">here</a>.</p>
-<p><img data-src="../images/MyFirstRMarkdown.png" style="width:100.0%"></p>
+<p>My Rmarkdown file, for this exercise, is below and <a href="https://github.com/hughesevoanth/intro_to_r/blob/main/day3/My_First_RMarkdown.Rmd">here</a>.</p>
+<div class="center">
+<p><img data-src="../images/MyFirstRMarkdown.png" style="width:75.0%"></p>
+</div>
 <div class="quarto-auto-generated-content">
 <p><img src="../images/pb_purple.png" class="slide-logo"></p>
 <div class="footer footer-default">

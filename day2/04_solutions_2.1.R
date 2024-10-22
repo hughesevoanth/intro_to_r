@@ -9,7 +9,8 @@
 ## it as described in the file 03_practical_2.1.html
 
 ###-------read in the data set --------------
-mydata = read.delim("simulated_data.txt")
+mydata = read.delim("../data/simulated_data.txt")
+mydata = read.table("../data/simulated_data.txt", sep = "\t")
 
 ###-------1. Is the data a data frame? --------------
 is.data.frame(mydata)
@@ -22,18 +23,18 @@ nrow(mydata)
 # Answer: 500
 
 
-###-------3. How many rows are in the data set? --------------
+###-------3. How many cols are in the data set? --------------
 ncol(mydata)
 
 
 ###-------4. How many features ("f__") are in the data set? --------------
 colnames(mydata) 
 
-# Answer: 14
+# Answer: 10
 
 
 #### a specific count
-length( grep("f", colnames(mydata)) )
+length( grep("f", colnames(mydata) ) )
 # Answer: 10
 
 #### an alternative way in case the letter "f" is in other variable names
@@ -53,13 +54,18 @@ missingness
 
 
 ###-------6. What is the Pearson's r (correlation) between height and weight? --------------
-cor.test(mydata$height, mydata$weight, method = "p")
+r = cor.test(mydata$height, mydata$weight, method = "p")
 
 # Answer: 0.755
 
 ###-------7. How much of the variance in weight is explained by height? --------------
-r = cor.test(mydata$height, mydata$weight, method = "p")$estimate
-r^2
+# r = cor.test(mydata$height, mydata$weight, method = "p")$estimate
+r$estimate^2
+# r^2
+
+fit = lm(height~weight, data = mydata)
+str( summary(fit) )
+summary(fit)$r.sq
 
 # Answer: 57%
 
@@ -96,8 +102,6 @@ boxplot(height ~ sex,
         col = c("red2","blue2"),
         main = "The effect of sex on height")
 dev.off()
-
-
 
 
 ###-------12. Estimate a correlation matrix of all the features among themselves (m-x-m matrix) --------------

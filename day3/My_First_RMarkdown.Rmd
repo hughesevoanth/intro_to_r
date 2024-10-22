@@ -1,0 +1,43 @@
+---
+title: "My First RMarkdown File"
+author: "David Hughes"
+date: "2024-10-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## This is my first R Markdown file
+
+In this exercise I am **learning** what *R Markdown* can do for me. 
+
+1. What is it capable of doing? 
+2. Why should I be using it?
+
+
+### Head the iris data set
+
+```{r cars}
+head(iris)
+```
+
+### Estimate the mean of the number columns of iris
+
+```{r pressure, echo=FALSE}
+(m = apply(iris[, 1:4], 2, mean) )
+```
+
+<!--An example of some R code in a line of text. -->
+- The mean *Sepal.Width* across all observations was **`r round(m[2], digits = 2)`**.
+
+### Plot the relationship between Sepal.Width and Petal.Length
+
+- color my observations by the Species
+
+```{r, fig.width = 6, fig.height = 5}
+plot(iris$Sepal.Width, iris$Petal.Length, col = iris$Species, pch = 19, cex = 1.5,
+     xlab = "Sepal Width", ylab = "Petal Length")
+```
+

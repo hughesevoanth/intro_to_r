@@ -1,0 +1,189 @@
+---
+title: "An Introduction to RMarkdown"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom_white.scss]
+    footer: "A review of day 1"
+    logo: "../images/pb_purple.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## What is RMarkdown?
+
+:::{.center}
+![](../images/rmarkdown.ong){width=30%}
+:::
+
+<br>
+
+-   [RMarkdown](https://rmarkdown.rstudio.com/) is a file format and a scripting and author framework to run analyses and generate reports for your analyses. 
+
+- It is a powerful tool for integrating code, results, and narrative into a single, reproducible document.
+
+
+## What is RMarkdown? cont'd
+:::::: columns
+:::{.column .smaller .center width="50%"}
+- You can generate
+
+    -   html
+    -   pdf
+    -   word docs
+    -   html slides (presentations) - such as this one.
+    -   handouts
+    -   books
+    -   dashboards
+    -   articles
+    -   websites
+:::
+:::{.column .smaller .center width="50%"}
+
+- It is **interactive**
+  
+  In one place you have:
+  - code
+  - results
+  - annotation and comments
+
+
+- Allows for **Reproducability**
+  - It makes it easy to create reproducible workflows.
+:::
+
+::::::
+
+## RMarkdown files "\*.Rmd"
+
+:::::: columns
+
+:::{.column .smaller width="40%"}
+Contains three things:
+
+<br><br>
+
+-   YAML (yet another markup lang.) metadata
+-   Text
+-   Code chunks
+
+
+
+:::
+:::{.column width="60%"}
+
+:::{.center}
+![](../images/NewRmd_step3.png){width=120%}
+:::
+
+:::
+
+:::::
+
+
+## What is Markdown?
+
+[Markdown](https://www.markdownguide.org) is a markup language with plain text formatting that can be converted into HTML, PDF, Word, or other document formats. It uses a simple syntax to create headers, lists, tables, links, and more.
+
+:::::: columns
+
+:::{.column width=50%}
+![](../images/Markdown1.png){width=100%}
+:::
+
+:::{.column width=50%}
+
+![](../images/Markdown2.png){width=100%}
+
+:::
+
+::::::
+
+
+## Mardown editors
+
+  - Rstudio
+  - Visual Studio
+  - [MacDown](https://macdown.uranusjr.com) (Mac)
+  - [ghostwriter](https://kde.github.io/ghostwriter/) (Windows)
+  - [Markdown Monster](https://markdownmonster.west-wind.com) (Windows)
+  
+## To start a new RMarkdown file
+
+```
+File > New File > R Markdown
+```
+
+![](../images/NewRmd_step1.png)
+
+
+## To start a new RMarkdown file cont'd 1
+
+You can make Documents, Presentations, or a Shiny app. We will continue with "Document".
+```
+Give your document a title and chose the output format as HTML.
+```
+
+![](../images/NewRmd_step2.png)
+
+
+## To start a new RMarkdown file cont'd 2
+
+```
+The new R Markdown file starts you off with some examples of how to use it. 
+```
+
+![](../images/NewRmd_step3.png)
+
+- Let us "Knit" this file to render it. 
+
+## To start a new RMarkdown file cont'd 3
+
+You can now see the rendered file
+
+![](../images/NewRmd_step4.png)
+
+
+## Reviewing the elements of the RMarkdown file
+
+![](../images/NewRmd_step3a.png)
+
+# Practical 3.1
+
+## Let's practice !{.smaller}
+
+- We are going to work with the iris data set. 
+It is already available when you start R.
+
+1. Start a new Rmarkdown file
+2. Title it: **"My First RMarkdown File"**
+3. We want to render to HTML
+4. Describe what you will be doing in this "report". Think about the good coding practices we previously discussed. 
+5. In your first code chunk ( [Cmd+Option+I] on a Mac) *head()* the iris data set.
+6. In your second code chunk: use the *apply()* function to estimate the *mean()* of the numeric columns.
+7. Make a scatter **plot**, illustrating the relationship between *Sepal.Width* and *Petal.Length*. Color each observation by *Species*
+8. Save your file
+9. Render your document by clicking on "Knit".
+
+## What should our exercise look like?
+
+My Rmarkdown file, for this exercise, is below and [here]().
+
+![](../images/MyFirstRMarkdown.png){width=100%}
+
+
+
+
+
+
+

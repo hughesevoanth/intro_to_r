@@ -1,0 +1,234 @@
+---
+title: "An Introduction to the tidyverse"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom_white.scss]
+    footer: "A review of day 1"
+    logo: "../images/pb_purple.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## The tidyverse
+
+:::::: columns
+:::: {.column width="30%"}
+<br>
+
+::: {style="text-align: center;"}
+![](../images/Tidyverse.png){width="20%"}
+:::
+::::
+
+::: {.column .smaller width="70%"}
+-   The tidyverse is a collection of R packages designed for data science
+-   built around the principles of:
+    -   tidy data
+    -   human-readable syntax
+    -   simplify and standardize workflows
+    -   uses a unified grammar
+    -   includes tools for
+        -   importing
+        -   tidying
+        -   transforming
+        -   visualizing
+        -   modeling data
+:::
+::::::
+
+## What is "tidy" data?
+
+**Tidy data** is formatted in a manner to make it easier to manipulate, analyze, and visualize.
+
+-   Principles of Tidy Data:
+    -   all variables form a column
+    -   all observations for a row
+    -   each type of observational unit should form a table
+        -   if the obs. units are indviduals and populations, they should be in different tables
+
+An example of **Tidy Data**
+
+| samid | sex | age | height | weight |
+|-------|-----|-----|--------|--------|
+| sid_1 | M   | 32  | 1.75   | 85     |
+| sid_2 | F   | 28  | 1.55   | 65     |
+| sid_3 | M   | 22  | 1.80   | 97     |
+
+## Benefits of tidy data
+
+:::::: columns
+::: {.column .smaller width="30%"}
+-   Intuitive
+-   Easy to manipulate
+    -   filter
+    -   summarize
+    -   reshape
+-   Consistency
+    -   easy to share
+    -   reuse
+    -   combine
+-   Compatibility
+    -   integrate across R packages
+:::
+
+:::: {.column width="70%"}
+<br><br>
+
+::: {style="text-align: center;"}
+<img src="https://r4ds.hadley.nz/diagrams/data-science/base.png" style="width: 85%;"/>
+:::
+::::
+::::::
+
+## Tidyverse was built for data science
+
+::::::: columns
+:::: {.column width="50%"}
+::: {style="text-align: center;"}
+<img src="../images/Tidyverse_DataScience.png" style="width: 60%;"/>
+:::
+::::
+
+:::: {.column .smaller width="50%"}
+-   built primarily by Hadley Wickham and folks at (RStudio) Posit
+
+::: {style="text-align: center;"}
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdBTnz9KspiUewejwofyDGdO9UCDBNlCVTjQ&amp;s" style="width: 35%;"/>
+:::
+
+-   the goal was to address
+    -   difficult to read syntax
+    -   a need for a comprehensive set of tools to clean, analyze, & visualize
+    -   prioritizing reproducibility
+::::
+:::::::
+
+## Core componets of the Tidyverse
+
+:::::: columns
+:::: {.column width="50%"}
+-   the collection of core R packages
+
+::: {style="text-align: center;"}
+<img src="../images/Tidyverse_DataScience.png" style="width: 60%;"/>
+:::
+::::
+
+::: {.column .smaller width="50%"}
+**core R Packages**
+
+-   **readr**: Data import (CSV and text files).
+-   **tibble**: An enhanced, modern data frame
+-   **tidyr**: Data tidying (reshaping data into "tidy" format).
+-   **ggplot2**: Data visualization.
+-   **dplyr**: Data wrangling (filtering, summarizing, etc.).
+-   **purrr**: Functional programming (working with lists and applying functions).
+-   **stringr**: String manipulation.
+-   **forcats**: Handling categorical data (factors).
+:::
+::::::
+
+## A key reference
+
+An essential reference for learning the tidyverse is Hadley Wickham's "R for Data Science" [book](https://r4ds.hadley.nz).
+
+::: {style="text-align: center;"}
+<img src="https://r4ds.hadley.nz/cover.jpg" style="width: 30%;"/>
+:::
+
+## What is a tibble? {.smaller}
+
+::::: columns
+::: {.column .smaller width="50%"}
+A tibble is a special form of a data frame.
+
+-   there are NO row names on a tibble.
+-   when printed to screen a tibble will only print 10 rows and columns that fit on the screen
+-   when reading in a tibble will never change a column name
+    -   spaces and special characters will remain
+-   characters are not forced into factors
+-   lists can be stored in columns
+-   tibbles are more memory efficient
+:::
+
+::: {.column .smaller width="50%"}
+There is a tibble R package
+
+```{r}
+library(tibble)
+iris = tibble(iris)
+iris
+```
+:::
+:::::
+
+## Reading in data set
+
+-   libraries
+-   [readr](https://readr.tidyverse.org)
+
+```{r, eval = FALSE}
+readr::read_delim()
+```
+
+-   [readxl](https://readxl.tidyverse.org)
+
+```{r, eval = FALSE}
+readxl::read_xlsx(, sheet = 1) ## sheet tells the function which excel tab to read in.
+```
+
+-   [data.table](https://readr.tidyverse.org)
+    -   great for very big data sets
+    -   unique syntax for fast sub-setting
+    -   [cheatsheet](https://images.datacamp.com/image/upload/v1653830846/Marketing/Blog/data_table_cheat_sheet.pdf)
+
+```{r, eval = FALSE}
+data.table::fread()
+```
+
+## Pipes
+
+-   Pipes **\|\>** are syntax used to send output from one function to another.
+-   In short is a means to chain functions together.
+    -   this avoids the need for intermediate, unnecessary variables.
+-   Pipes are now a part of base R. Although the [maggrittr](https://magrittr.tidyverse.org) package started it with it's pipe %\>%.
+
+Pipes
+
+```{r}
+1:10 |> log10() |> sd()
+
+```
+
+Same as above
+
+```{r}
+sd(log10(1:10))
+```
+
+## Installation
+
+Let's install the tidyverse core collection of R packages.
+
+-   start an R session and run
+
+```{r, eval = FALSE}
+install.packages("tidyverse")
+```
+
+-   load the libraries
+
+```{r}
+library(tidyverse)
+```

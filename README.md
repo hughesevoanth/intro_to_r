@@ -54,14 +54,13 @@ By the end of the course students will be able to:
 ||Practical 2.2 <br> &nbsp;&nbsp;&nbsp;&nbsp; fix this script <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical_2.2](https://github.com/hughesevoanth/intro_to_r/blob/main/day2/06_practical_2.2.R) [solutions_2.2](https://github.com/hughesevoanth/intro_to_r/blob/main/day2/07_solutions_2.2.R)  |1330-1400| David & Terry |
 |Oct 23rd, 2024| (6) Introduction to **RMarkdown** <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day3/01_Intro_to_RMarkdown.html) |0900-0930| David Hughes|
 ||Practical 5 <br> &nbsp;&nbsp;&nbsp;&nbsp; My first R Markdown <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 3.1](https://hughesevoanth.github.io/intro_to_r/day3/01_Intro_to_RMarkdown#/practical-3.1) |0930-1000| David & others|
-|Oct 23rd, 2024| (7) A **brief** introduction to the **tidyverse**|1000-1100| David Hughes|
-||Practical 6 <br> &nbsp;&nbsp;&nbsp;&nbsp; tidy syntax <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 3.2](https://hughesevoanth.github.io/intro_to_r/day3/02_practical_3.2.html) [solutions 3.2](https://hughesevoanth.github.io/intro_to_r/day3/02_solutions_3.2.html)|1100-1200| David & others|
-|Oct 23rd, 2024| (8) An introduction to **ggplot** |1300-1400| David Hughes|
-||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; making some ggplots <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 3.3](https://hughesevoanth.github.io/intro_to_r/day3/02_practical_3.3.html) [solutions 3.3](https://hughesevoanth.github.io/intro_to_r/day3/02_solutions_3.3.html)|1400-1530| David & others|
+|Oct 23rd, 2024| (7) A **brief** introduction to the **tidyverse** <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day3/02_Intro_to_tidyverse.html) |1000-1100| David Hughes|
+|Oct 23rd, 2024| (8) An introduction to **ggplot** <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day3/03_Intro_to_ggplot.html)|1300-1400| David Hughes|
+||Practical 6 <br> &nbsp;&nbsp;&nbsp;&nbsp; making some ggplots <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 3.2](https://hughesevoanth.github.io/intro_to_r/day3/02_practical_3.3.html) [solutions 3.2](https://hughesevoanth.github.io/intro_to_r/day3/02_solutions_3.3.html)|1400-1530| David & others|
 |Oct 30th, 2024| (9) Data Wrangling |0900-1000| David Hughes|
-||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; more tidyverse |1000-1030| David & others|
+||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; more tidyverse |1000-1030| David & others|
 |Oct 30th, 2024| (10) Write your own functions |1100-1130| David Hughes|
-||Practical 9 <br> &nbsp;&nbsp;&nbsp;&nbsp; Now I am coder - I wrote my own function :-) |1130-1200| David & others|
+||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; Now I am coder - I wrote my own function :-) |1130-1200| David & others|
 |Oct 30th, 2024| (11) Working with your data |1300-1530| David Hughes|
 ||NO Practical <br> &nbsp;&nbsp;&nbsp;&nbsp; - **Bring your data to class** - |1300-1530| David & others|
 

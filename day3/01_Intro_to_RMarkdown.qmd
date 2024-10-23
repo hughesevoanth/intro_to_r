@@ -78,8 +78,6 @@ Contains three things:
 -   Text
 -   Code chunks
 
-
-
 :::
 :::{.column width="60%"}
 

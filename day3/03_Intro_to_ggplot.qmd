@@ -20,29 +20,29 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-## The Grammer of Graphics{.smaller}
+## The Grammer of Graphics {.smaller}
 
-::::::columns
-:::{.column width="30%"}
-<div style="text-align: center;">
+:::::: columns
+:::: {.column width="30%"}
+::: {style="text-align: center;"}
 ![](https://ggplot2.tidyverse.org/logo.png){width="90%"}
-</div>
 :::
-:::{.column width="70%"}
+::::
+
+::: {.column width="70%"}
 The [ggplot2](https://ggplot2.tidyverse.org) package is designed to make data visualizations easier to create, customize, and interpret.
 
-- Grammar of Graphics structured approach
-  - data
-  - aesthetic mappings
-    - position, color, and size
-  - geometries
-    - shapes (points, lines, bar, box plot, tiles)
-  - scales
-  - faceting
-    - sub-plots
-  - themes
-    - background colors, grid lines, text
-
+-   Grammar of Graphics structured approach
+    -   data
+    -   aesthetic mappings
+        -   position, color, and size
+    -   geometries
+        -   shapes (points, lines, bar, box plot, tiles)
+    -   scales
+    -   faceting
+        -   sub-plots
+    -   themes
+        -   background colors, grid lines, text
 :::
 ::::::
 
@@ -50,24 +50,23 @@ The [ggplot2](https://ggplot2.tidyverse.org) package is designed to make data vi
 
 <br>
 
-- ggplot are built in **layers**
-  - define data to be plot using aesthetics aes()
-  - add layers to define how the data is plot
-  
-## Basic ggplot syntax{.smaller}
+-   ggplot are built in **layers**
+    -   define data to be plot using aesthetics aes()
+    -   add layers to define how the data is plot
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-- then add geometrics 
-  - geom_###()
-  - what is plotted
+## Basic ggplot syntax {.smaller}
+
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -75,24 +74,22 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   geom_point()
 ```
 :::
-::::::
-  
-  
-## Basic ggplot syntax cont'd{.smaller}
+:::::
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
+## Basic ggplot syntax cont'd {.smaller}
+
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -100,24 +97,23 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   geom_point(aes(color = Species), size = 3) 
 ```
 :::
-::::::
+:::::
 
-## Basic ggplot syntax cont'd 2{.smaller}
+## Basic ggplot syntax cont'd 2 {.smaller}
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -126,25 +122,24 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   theme_bw()
 ```
 :::
-::::::
-  
-## Basic ggplot syntax cont'd 3{.smaller}
+:::::
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
+## Basic ggplot syntax cont'd 3 {.smaller}
+
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -154,27 +149,25 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   facet_wrap(.~Species)
 ```
 :::
-::::::
+:::::
 
+## Basic ggplot syntax cont'd 4 {.smaller}
 
-## Basic ggplot syntax cont'd 4{.smaller}
-
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
-- change the scales
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
+-   change the scales
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -184,28 +177,26 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   facet_wrap(.~Species, scales = "free")
 ```
 :::
-::::::
+:::::
 
+## Basic ggplot syntax cont'd 5 {.smaller}
 
-## Basic ggplot syntax cont'd 5{.smaller}
-
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
-- change the scales
-- add a regression line
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
+-   change the scales
+-   add a regression line
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -217,28 +208,27 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
               color = "black")
 ```
 :::
-::::::
+:::::
 
-## Basic ggplot syntax cont'd 6{.smaller}
+## Basic ggplot syntax cont'd 6 {.smaller}
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
-- change the scales
-- add a regression line
-- edit the axes
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
+-   change the scales
+-   add a regression line
+-   edit the axes
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -251,29 +241,28 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   labs(x = "sepal width", y = "petal length")
 ```
 :::
-::::::
+:::::
 
-## Basic ggplot syntax cont'd 7{.smaller}
+## Basic ggplot syntax cont'd 7 {.smaller}
 
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
-- change the scales
-- add a regression line
-- edit the axes
-- move the legend
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
+-   change the scales
+-   add a regression line
+-   edit the axes
+-   move the legend
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -287,31 +276,29 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
   theme(legend.position="bottom")
 ```
 :::
-::::::
+:::::
 
+## Basic ggplot syntax cont'd 8 {.smaller}
 
-## Basic ggplot syntax cont'd 8{.smaller}
-
-::::::columns
-:::{.column width="20%}
-- define aesthetics 
-  - aes()
-  - the data to be plotted
-  - change color and size of data
-- then add geometrics 
-  - geom_###()
-  - what is plotted
-- change theme
-- sub plot the data by species
-- change the scales
-- add a regression line
-- edit the axes
-- move the legend
-- add a title and subtitle
+::::: columns
+::: {.column width="\"20%"}
+-   define aesthetics
+    -   aes()
+    -   the data to be plotted
+    -   change color and size of data
+-   then add geometrics
+    -   geom\_###()
+    -   what is plotted
+-   change theme
+-   sub plot the data by species
+-   change the scales
+-   add a regression line
+-   edit the axes
+-   move the legend
+-   add a title and subtitle
 :::
 
-:::{.column width="80%}
-
+::: {.column width="\"80%"}
 <br>
 
 ```{r}
@@ -327,47 +314,49 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
        subtitle = "some more information")
 ```
 :::
-::::::
+:::::
 
 ## Other geoms
 
-::::::columns
-:::{.column width="50%"}
-- geom_point()
-- geom_abline()
-- geom_smooth()
-- geom_bar()
-- geom_boxplot()
-- geom_violin()
-- geom_density()
-- geom_histogram()
-- geom_line()
-- geom_vline()
-- geom_hline()
+::::: columns
+::: {.column width="50%"}
+-   geom_point()
+-   geom_abline()
+-   geom_smooth()
+-   geom_bar()
+-   geom_boxplot()
+-   geom_violin()
+-   geom_density()
+-   geom_histogram()
+-   geom_line()
+-   geom_vline()
+-   geom_hline()
+:::
 
+::: {.column width="50%"}
+-   geom_text()
+-   geom_label()
+-   geom_jitter()
+-   geom_density_ridges()
+-   geom_tile()
+-   geom_waffle()
+-   geom_area()
+-   geom_bin2d()
+-   geom_segment()
 :::
-:::{.column width="50%"}
-- geom_text()
-- geom_label()
-- geom_jitter()
-- geom_density_ridges()
-- geom_tile()
-- geom_waffle()
-- geom_area()
-- geom_bin2d()
-- geom_segment() 
-:::
-::::::
+:::::
 
 ## Useful resources
 
 <br>
 
-- R for Data Science; Data Visualization [chapter](https://r4ds.hadley.nz/data-visualize)
-- Rsquared Academy's Data Visualization [bookdown](https://viz-ggplot2.rsquaredacademy.com/ggplot2-quicktour)
-- R Graph Gallery [website](https://r-graph-gallery.com/ggplot2-package.html)
-
+-   R for Data Science; Data Visualization [chapter](https://r4ds.hadley.nz/data-visualize)
+-   Rsquared Academy's Data Visualization [bookdown](https://viz-ggplot2.rsquaredacademy.com/ggplot2-quicktour)
+-   R Graph Gallery [website](https://r-graph-gallery.com/ggplot2-package.html)
 
 # Practical 3.2
 
+<br>
 
+- [practical](https://hughesevoanth.github.io/intro_to_r/day3/04_Practical_3.2.html)
+- [solutions](https://hughesevoanth.github.io/intro_to_r/day3/05_Solutions_3.2.html)

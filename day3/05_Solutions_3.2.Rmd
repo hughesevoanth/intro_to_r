@@ -1,5 +1,5 @@
 ---
-title: "Practical 3.2"
+title: "Solutions 3.2"
 author: "David Hughes"
 date: "2024-10-23"
 output: html_document

@@ -23,7 +23,7 @@ library(tidyverse)
 ## The tidyverse
 
 :::::: columns
-:::: {.column width="30%"}
+:::: {.column width="90%"}
 <br>
 
 ::: {style="text-align: center;"}
@@ -96,7 +96,9 @@ An example of **Tidy Data**
 ::::::: columns
 :::: {.column width="50%"}
 ::: {style="text-align: center;"}
-<img src="../images/Tidyverse_DataScience.png" style="width: 60%;"/>
+<br>
+
+<img src="../images/Tidyverse_DataScience.png" style="width: 70%;"/>
 :::
 ::::
 
@@ -121,7 +123,7 @@ An example of **Tidy Data**
 -   the collection of core R packages
 
 ::: {style="text-align: center;"}
-<img src="../images/Tidyverse_DataScience.png" style="width: 60%;"/>
+<img src="../images/Tidyverse_DataScience.png" style="width: 70%;"/>
 :::
 ::::
 

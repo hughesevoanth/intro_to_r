@@ -22,9 +22,9 @@ library(tidyverse)
 
 ## What is RMarkdown?
 
-:::{.center}
+<div style="text-align: center;">
 ![](../images/rmarkdown.png){width=20%}
-:::
+</div>
 
 
 - [RMarkdown](https://rmarkdown.rstudio.com/) is a file format and a scripting and author framework to run analyses and generate reports for your analyses. 
@@ -133,6 +133,9 @@ File > New File > R Markdown
 :::::: columns
 
 :::{.column width=20%}
+
+<br>
+
 You can make Documents, Presentations, or a Shiny app. We will continue with "Document".
 :::
 
@@ -170,15 +173,16 @@ The new R Markdown file starts you off with some examples of how to use it.
 ## To start a new RMarkdown file cont'd 3{.smaller}
 
 You can now see the rendered file
-
+<div style="text-align: center;">
 ![](../images/NewRmd_step4.png){width=80%}
-
+</div>
 
 ## Reviewing the elements of the RMarkdown file
 
-:::{.center}
-![](../images/NewRmd_step3a.png){width=80%}
-:::
+<div style="text-align: center;">
+<img src="../images/NewRmd_step3a.png" style="width: 80%;" />
+</div>
+
 
 # Practical 3.1
 
@@ -201,9 +205,9 @@ It is already available when you start R.
 
 My Rmarkdown file, for this exercise, is below and [here](https://github.com/hughesevoanth/intro_to_r/blob/main/day3/My_First_RMarkdown.Rmd).
 
-:::{.center}
+<div style="text-align: center;">
 ![](../images/MyFirstRMarkdown.png){width=75%}
-:::
+</div>
 
 
 

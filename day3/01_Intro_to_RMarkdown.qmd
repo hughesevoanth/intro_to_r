@@ -180,13 +180,13 @@ You can now see the rendered file
 ## Reviewing the elements of the RMarkdown file
 
 <div style="text-align: center;">
-<img src="../images/NewRmd_step3a.png" style="width: 80%;" />
+<img src="../images/NewRmd_step3a.png" style="width: 60%;" />
 </div>
 
 
 # Practical 3.1
 
-## Let's practice !{.smaller}
+## Let's practice !{.smaller2}
 
 - We are going to work with the iris data set. 
 It is already available when you start R.

@@ -23,12 +23,8 @@ library(tidyverse)
 ## The tidyverse
 
 :::::: columns
-:::: {.column width="90%"}
-<br>
-
-::: {style="text-align: center;"}
-![](../images/Tidyverse.png){width="20%"}
-:::
+:::: {.column width="30%"}
+![](../images/Tidyverse.png){width="60%"}
 ::::
 
 ::: {.column .smaller width="70%"}

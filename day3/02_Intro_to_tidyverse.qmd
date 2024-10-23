@@ -22,7 +22,8 @@ library(tidyverse)
 
 ## The tidyverse
 
-:::::: columns
+::::::columns
+
 :::: {.column width="30%"}
 ![](../images/Tidyverse.png){width="60%"}
 ::::
@@ -41,6 +42,7 @@ library(tidyverse)
         -   visualizing
         -   modeling data
 :::
+
 ::::::
 
 ## What is "tidy" data?

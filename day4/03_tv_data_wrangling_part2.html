@@ -567,29 +567,29 @@ David A Hughes
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a>sw1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
-   name              height  mass
-   &lt;chr&gt;              &lt;int&gt; &lt;dbl&gt;
- 1 Leia Organa          150    49
- 2 Owen Lars            178   120
- 3 Biggs Darklighter    183    84
- 4 Han Solo             180    80
- 5 Ric Olié             183    NA
- 6 Gregar Typho         185    85
- 7 Dormé                165    NA
- 8 Dexter Jettster      198   102
- 9 Taun We              213    NA
-10 San Hill             191    NA</code></pre>
+   name                height  mass
+   &lt;chr&gt;                &lt;int&gt; &lt;dbl&gt;
+ 1 Owen Lars              178   120
+ 2 R5-D4                   97    32
+ 3 Mon Mothma             150    NA
+ 4 Padmé Amidala          185    45
+ 5 Watto                  137    NA
+ 6 Eeth Koth              171    NA
+ 7 Poggle the Lesser      183    80
+ 8 Bail Prestor Organa    191    NA
+ 9 Jango Fett             183    79
+10 Rey                     NA    NA</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a>sw2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
-  name              homeworld  species 
-  &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;   
-1 Biggs Darklighter Tatooine   Human   
-2 Ric Olié          Naboo      Human   
-3 Gregar Typho      Naboo      &lt;NA&gt;    
-4 Dexter Jettster   Ojom       Besalisk
-5 San Hill          Muunilinst Muun    </code></pre>
+  name                homeworld species  
+  &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;    
+1 Owen Lars           Tatooine  Human    
+2 Padmé Amidala       Naboo     Human    
+3 Watto               Toydaria  Toydarian
+4 Poggle the Lesser   Geonosis  Geonosian
+5 Bail Prestor Organa Alderaan  Human    </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
@@ -600,13 +600,13 @@ David A Hughes
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(sw1, sw2, <span class="at">by =</span> <span class="st">"name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 5
-  name              height  mass homeworld  species 
-  &lt;chr&gt;              &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   
-1 Biggs Darklighter    183    84 Tatooine   Human   
-2 Ric Olié             183    NA Naboo      Human   
-3 Gregar Typho         185    85 Naboo      &lt;NA&gt;    
-4 Dexter Jettster      198   102 Ojom       Besalisk
-5 San Hill             191    NA Muunilinst Muun    </code></pre>
+  name                height  mass homeworld species  
+  &lt;chr&gt;                &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    
+1 Owen Lars              178   120 Tatooine  Human    
+2 Padmé Amidala          185    45 Naboo     Human    
+3 Watto                  137    NA Toydaria  Toydarian
+4 Poggle the Lesser      183    80 Geonosis  Geonosian
+5 Bail Prestor Organa    191    NA Alderaan  Human    </code></pre>
 </div>
 </div>
 <p><br></p>
@@ -614,13 +614,13 @@ David A Hughes
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(sw2, sw1, <span class="at">by =</span> <span class="st">"name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 5
-  name              homeworld  species  height  mass
-  &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;
-1 Biggs Darklighter Tatooine   Human       183    84
-2 Ric Olié          Naboo      Human       183    NA
-3 Gregar Typho      Naboo      &lt;NA&gt;        185    85
-4 Dexter Jettster   Ojom       Besalisk    198   102
-5 San Hill          Muunilinst Muun        191    NA</code></pre>
+  name                homeworld species   height  mass
+  &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt;
+1 Owen Lars           Tatooine  Human        178   120
+2 Padmé Amidala       Naboo     Human        185    45
+3 Watto               Toydaria  Toydarian    137    NA
+4 Poggle the Lesser   Geonosis  Geonosian    183    80
+5 Bail Prestor Organa Alderaan  Human        191    NA</code></pre>
 </div>
 </div>
 </div>
@@ -707,11 +707,11 @@ David A Hughes
 <pre><code># A tibble: 5 × 4
   marker  mod0  mod1  mod2
   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 hba1c  0.295 0.257 0.182
-2 hdl    0.288 0.260 0.195
-3 ldl    0.290 0.239 0.214
-4 totcho 0.301 0.250 0.189
-5 crp    0.295 0.240 0.188</code></pre>
+1 hba1c  0.292 0.225 0.206
+2 hdl    0.313 0.258 0.189
+3 ldl    0.304 0.249 0.198
+4 totcho 0.303 0.245 0.200
+5 crp    0.299 0.247 0.204</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:&quot;50%;">
@@ -725,21 +725,21 @@ David A Hughes
 <pre><code># A tibble: 15 × 3
    marker  beta model
    &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;
- 1 hba1c  0.295 mod0 
- 2 hdl    0.288 mod0 
- 3 ldl    0.290 mod0 
- 4 totcho 0.301 mod0 
- 5 crp    0.295 mod0 
- 6 hba1c  0.257 mod1 
- 7 hdl    0.260 mod1 
- 8 ldl    0.239 mod1 
- 9 totcho 0.250 mod1 
-10 crp    0.240 mod1 
-11 hba1c  0.182 mod2 
-12 hdl    0.195 mod2 
-13 ldl    0.214 mod2 
-14 totcho 0.189 mod2 
-15 crp    0.188 mod2 </code></pre>
+ 1 hba1c  0.292 mod0 
+ 2 hdl    0.313 mod0 
+ 3 ldl    0.304 mod0 
+ 4 totcho 0.303 mod0 
+ 5 crp    0.299 mod0 
+ 6 hba1c  0.225 mod1 
+ 7 hdl    0.258 mod1 
+ 8 ldl    0.249 mod1 
+ 9 totcho 0.245 mod1 
+10 crp    0.247 mod1 
+11 hba1c  0.206 mod2 
+12 hdl    0.189 mod2 
+13 ldl    0.198 mod2 
+14 totcho 0.200 mod2 
+15 crp    0.204 mod2 </code></pre>
 </div>
 </div>
 </div>
@@ -754,10 +754,10 @@ David A Hughes
 <pre><code># A tibble: 4 × 4
   marker  mod0  mod1  mod2
   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 hba1c  0.295 0.257 0.182
-2 hdl    0.288 0.260 0.195
-3 ldl    0.290 0.239 0.214
-4 totcho 0.301 0.250 0.189</code></pre>
+1 hba1c  0.292 0.225 0.206
+2 hdl    0.313 0.258 0.189
+3 ldl    0.304 0.249 0.198
+4 totcho 0.303 0.245 0.200</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -768,21 +768,21 @@ David A Hughes
 <pre><code># A tibble: 15 × 3
    marker model  beta
    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
- 1 hba1c  mod0  0.295
- 2 hba1c  mod1  0.257
- 3 hba1c  mod2  0.182
- 4 hdl    mod0  0.288
- 5 hdl    mod1  0.260
- 6 hdl    mod2  0.195
- 7 ldl    mod0  0.290
- 8 ldl    mod1  0.239
- 9 ldl    mod2  0.214
-10 totcho mod0  0.301
-11 totcho mod1  0.250
-12 totcho mod2  0.189
-13 crp    mod0  0.295
-14 crp    mod1  0.240
-15 crp    mod2  0.188</code></pre>
+ 1 hba1c  mod0  0.292
+ 2 hba1c  mod1  0.225
+ 3 hba1c  mod2  0.206
+ 4 hdl    mod0  0.313
+ 5 hdl    mod1  0.258
+ 6 hdl    mod2  0.189
+ 7 ldl    mod0  0.304
+ 8 ldl    mod1  0.249
+ 9 ldl    mod2  0.198
+10 totcho mod0  0.303
+11 totcho mod1  0.245
+12 totcho mod2  0.200
+13 crp    mod0  0.299
+14 crp    mod1  0.247
+15 crp    mod2  0.204</code></pre>
 </div>
 </div>
 </section>
@@ -796,21 +796,21 @@ David A Hughes
 <pre><code># A tibble: 15 × 3
    marker model  beta
    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
- 1 hba1c  mod0  0.295
- 2 hba1c  mod1  0.257
- 3 hba1c  mod2  0.182
- 4 hdl    mod0  0.288
- 5 hdl    mod1  0.260
- 6 hdl    mod2  0.195
- 7 ldl    mod0  0.290
- 8 ldl    mod1  0.239
- 9 ldl    mod2  0.214
-10 totcho mod0  0.301
-11 totcho mod1  0.250
-12 totcho mod2  0.189
-13 crp    mod0  0.295
-14 crp    mod1  0.240
-15 crp    mod2  0.188</code></pre>
+ 1 hba1c  mod0  0.292
+ 2 hba1c  mod1  0.225
+ 3 hba1c  mod2  0.206
+ 4 hdl    mod0  0.313
+ 5 hdl    mod1  0.258
+ 6 hdl    mod2  0.189
+ 7 ldl    mod0  0.304
+ 8 ldl    mod1  0.249
+ 9 ldl    mod2  0.198
+10 totcho mod0  0.303
+11 totcho mod1  0.245
+12 totcho mod2  0.200
+13 crp    mod0  0.299
+14 crp    mod1  0.247
+15 crp    mod2  0.204</code></pre>
 </div>
 </div>
 </section>
@@ -824,21 +824,21 @@ David A Hughes
 <pre><code># A tibble: 15 × 3
    marker model  beta
    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;
- 1 hba1c  mod0  0.295
- 2 hba1c  mod1  0.257
- 3 hba1c  mod2  0.182
- 4 hdl    mod0  0.288
- 5 hdl    mod1  0.260
- 6 hdl    mod2  0.195
- 7 ldl    mod0  0.290
- 8 ldl    mod1  0.239
- 9 ldl    mod2  0.214
-10 totcho mod0  0.301
-11 totcho mod1  0.250
-12 totcho mod2  0.189
-13 crp    mod0  0.295
-14 crp    mod1  0.240
-15 crp    mod2  0.188</code></pre>
+ 1 hba1c  mod0  0.292
+ 2 hba1c  mod1  0.225
+ 3 hba1c  mod2  0.206
+ 4 hdl    mod0  0.313
+ 5 hdl    mod1  0.258
+ 6 hdl    mod2  0.189
+ 7 ldl    mod0  0.304
+ 8 ldl    mod1  0.249
+ 9 ldl    mod2  0.198
+10 totcho mod0  0.303
+11 totcho mod1  0.245
+12 totcho mod2  0.200
+13 crp    mod0  0.299
+14 crp    mod1  0.247
+15 crp    mod2  0.204</code></pre>
 </div>
 </div>
 </section>
@@ -851,11 +851,11 @@ David A Hughes
 <pre><code># A tibble: 5 × 3
   marker  beta model
   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;
-1 crp    0.295 mod0 
-2 crp    0.240 mod1 
-3 crp    0.188 mod2 
-4 hba1c  0.295 mod0 
-5 hba1c  0.257 mod1 </code></pre>
+1 crp    0.299 mod0 
+2 crp    0.247 mod1 
+3 crp    0.204 mod2 
+4 hba1c  0.292 mod0 
+5 hba1c  0.225 mod1 </code></pre>
 </div>
 </div>
 <p><br></p>
@@ -866,16 +866,16 @@ David A Hughes
 <pre><code># A tibble: 5 × 4
   marker  mod0  mod1  mod2
   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 hba1c  0.295 0.257 0.182
-2 hdl    0.288 0.260 0.195
-3 ldl    0.290 0.239 0.214
-4 totcho 0.301 0.250 0.189
-5 crp    0.295 0.240 0.188</code></pre>
+1 hba1c  0.292 0.225 0.206
+2 hdl    0.313 0.258 0.189
+3 ldl    0.304 0.249 0.198
+4 totcho 0.303 0.245 0.200
+5 crp    0.299 0.247 0.204</code></pre>
 </div>
 </div>
 </section>
 <section id="pivot_wider-another-example" class="slide level2 smaller">
-<h2>pivot_wider another example</h2>
+<h2>pivot_wider() another example</h2>
 <pre><code>  - us_rent_income is another dataset available in R</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -912,6 +912,13 @@ David A Hughes
 # ℹ 42 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="practical-4.2" class="title-slide slide level1 center">
+<h1>Practical 4.2</h1>
+<ul>
+<li><a href="https://hughesevoanth.github.io/intro_to_r/day4/04_Practical_4.2.html">practical 4.2</a></li>
+<li><a href="https://hughesevoanth.github.io/intro_to_r/day4/04_Solutions_4.2.html">solutions 4.2</a></li>
+</ul>
 <div class="quarto-auto-generated-content">
 <p><img src="../images/pb_purple.png" class="slide-logo"></p>
 <div class="footer footer-default">

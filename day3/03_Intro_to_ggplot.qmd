@@ -6,7 +6,7 @@ format:
     slide-number: true
     aspect-ratio: 16:9
     theme: [default, ../css/custom_white.scss]
-    footer: "A review of day 1"
+    footer: "An Introduction to ggplot"
     logo: "../images/pb_purple.png"
     scrollable: true
     chalkboard: true
@@ -358,5 +358,5 @@ iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
 
 <br>
 
-- [practical](https://hughesevoanth.github.io/intro_to_r/day3/04_Practical_3.2.html)
-- [solutions](https://hughesevoanth.github.io/intro_to_r/day3/05_Solutions_3.2.html)
+-   [practical](https://hughesevoanth.github.io/intro_to_r/day3/04_Practical_3.2.html)
+-   [solutions](https://hughesevoanth.github.io/intro_to_r/day3/05_Solutions_3.2.html)

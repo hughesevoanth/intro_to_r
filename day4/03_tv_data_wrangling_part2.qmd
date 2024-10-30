@@ -325,7 +325,6 @@ us_rent_income |> pivot_wider(names_from = variable, values_from = c(estimate, m
 
 
 
-
 # Practical 4.2
 
 

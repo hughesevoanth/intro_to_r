@@ -57,10 +57,10 @@ By the end of the course students will be able to:
 |Oct 23rd, 2024| (7) A **brief** introduction to the **tidyverse** <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day3/02_Intro_to_tidyverse.html) |1000-1100| David Hughes|
 |Oct 23rd, 2024| (8) An introduction to **ggplot** <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day3/03_Intro_to_ggplot.html)|1300-1400| David Hughes|
 ||Practical 6 <br> &nbsp;&nbsp;&nbsp;&nbsp; making some ggplots <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 3.2](https://hughesevoanth.github.io/intro_to_r/day3/04_Practical_3.2.html) [solutions 3.2](https://hughesevoanth.github.io/intro_to_r/day3/05_Solutions_3.2.html)|1400-1530| David & others|
-|Oct 30th, 2024| (9) Data Wrangling |0900-1000| David Hughes|
-||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; more tidyverse |1000-1030| David & others|
-|Oct 30th, 2024| (10) Write your own functions |1100-1130| David Hughes|
-||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; Now I am coder - I wrote my own function :-) |1130-1200| David & others|
+|Oct 30th, 2024| (9) Data Wrangling part 1 <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day4/01_tv_data_wrangling_part1.html)|0900-1000| David Hughes|
+||Practical 7 <br> &nbsp;&nbsp;&nbsp;&nbsp; dplyr <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 4.1](https://hughesevoanth.github.io/intro_to_r/day4/02_Practical_4.1.html) [solutions 4.1](https://hughesevoanth.github.io/intro_to_r/day4/02_Solutions_4.1.html)|1000-1030| David & others|
+|Oct 30th, 2024| (10) Data Wrangling part 2 <br> &nbsp;&nbsp;&nbsp;&nbsp;[web](https://hughesevoanth.github.io/intro_to_r/day4/03_tv_data_wrangling_part2.html)|1100-1130| David Hughes|
+||Practical 8 <br> &nbsp;&nbsp;&nbsp;&nbsp; join (dplyr) & pivot (tidyr) <br> &nbsp;&nbsp;&nbsp;&nbsp; [practical 4.2](https://hughesevoanth.github.io/intro_to_r/day4/04_Practical_4.2.html) [solutions 4.2](https://hughesevoanth.github.io/intro_to_r/day4/04_Solutions_4.2.html)|1130-1200| David & others|
 |Oct 30th, 2024| (11) Working with your data |1300-1530| David Hughes|
 ||NO Practical <br> &nbsp;&nbsp;&nbsp;&nbsp; - **Bring your data to class** - |1300-1530| David & others|
 

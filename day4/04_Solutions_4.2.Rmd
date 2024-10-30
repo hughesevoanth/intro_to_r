@@ -1,5 +1,5 @@
 ---
-title: "Practical 4.2"
+title: "Solutions 4.2"
 author: "David Hughes"
 date: "2024-10-23"
 output: html_document
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
 ```
 
-## Practical 4.2
+## Solutions to Practical 4.2
 
 In this practical we are going to apply the data wrangling tools that we learned about from the second lecture of day 4 of the Introduction to R Short Course. Specifically we are going to join or merge data sets using function from the **dplyr** package andand reshape or transform other data sets using the pivot function from the **tidyr** R package. 
 

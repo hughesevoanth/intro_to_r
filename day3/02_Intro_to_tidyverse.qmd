@@ -6,7 +6,7 @@ format:
     slide-number: true
     aspect-ratio: 16:9
     theme: [default, ../css/custom_white.scss]
-    footer: "A review of day 1"
+    footer: "An Introduction to the tidyverse"
     logo: "../images/pb_purple.png"
     scrollable: true
     chalkboard: true
@@ -22,11 +22,10 @@ library(tidyverse)
 
 ## The tidyverse
 
-::::::columns
-
-:::: {.column width="30%"}
+::::: columns
+::: {.column width="30%"}
 ![](../images/Tidyverse.png){width="60%"}
-::::
+:::
 
 ::: {.column .smaller width="70%"}
 -   The tidyverse is a collection of R packages designed for data science
@@ -42,8 +41,7 @@ library(tidyverse)
         -   visualizing
         -   modeling data
 :::
-
-::::::
+:::::
 
 ## What is "tidy" data?
 

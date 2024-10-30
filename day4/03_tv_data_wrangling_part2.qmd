@@ -1,0 +1,334 @@
+---
+title: "An Introduction to data wrangling (pt2)"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom_white.scss]
+    footer: "An Introduction to data wrangling (pt2)"
+    logo: "../images/pb_purple.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Data wrangling: tidying and reshaping data
+
+In this lesson we are going to discuss two items
+
+::::: columns
+::: {.column .smaller .center width="30%"}
+<img src="https://dplyr.tidyverse.org/logo.png" width="200" alt="Tidyverse logo">
+<!--![](https://dplyr.tidyverse.org/logo.png)-->
+<br>
+<img src="https://tidyr.tidyverse.org/logo.png" width="200" alt="Tidyverse logo">
+<!--![](https://tidyr.tidyverse.org/logo.png)-->
+
+
+:::
+
+::: {.column .smaller .center width="70%"}
+
+<br>
+
+  - merging or joining data sets together
+    - dplyr package
+  
+<br><br>
+  
+  - pivoting data sets between long and wide formats
+    - tidyr package
+
+:::
+
+:::::
+
+
+## Joining data sets
+
+::::: columns
+::: {.column .smaller .center width="30%"}
+
+<br>
+
+<img src="https://dplyr.tidyverse.org/logo.png" width="200" alt="Tidyverse logo">
+<!--![](https://dplyr.tidyverse.org/logo.png)-->
+:::
+
+::: {.column .smaller .center width="70%"}
+
+<br>
+
+Here we are using three verbs to merge relational data sets.
+
+  - left_join()
+  - right_join()
+  - full_join()
+  
+:::
+
+:::::
+
+## full_join() 
+Combine all of the data from two data frame that are relational. 
+
+::::: columns
+
+:::{.column width="40%"}
+<br>
+```{r}
+band_members
+```
+
+<br>
+
+```{r}
+band_instruments
+```
+
+:::
+
+:::{.column width="60%"}
+
+<br><br>
+
+  - join these two data sets
+```{r}
+full_join(band_members, band_instruments, by = "name")
+```
+
+:::
+
+:::::
+
+
+## left_join()
+
+<br>
+
+  - left_join() will retain only the observations of x (band_members)
+  
+```{r}
+left_join(band_members, band_instruments, by = "name")
+```
+
+## right_join()
+
+<br>
+
+  - right_join() will retain only the observations of y (band_instruments)
+  
+```{r}
+right_join(band_members, band_instruments, by = "name")
+```
+
+
+## inner_join()
+
+<br>
+
+  - inner_join() will retain only the observations of x that are also in y 
+      - generally not advisable to use unless you are very sure of what you will get. 
+      
+  
+```{r}
+inner_join(band_members, band_instruments, by = "name")
+```
+
+## Another example of joining data
+
+::::: columns
+
+:::{.column width="40%"}
+
+make some example data
+```{r}
+id = sample(starwars$name, 10)
+id2 = sample(id, 5)
+sw1 = starwars |> filter(name %in% id) |> select(name, height, mass)
+sw2 = starwars |> filter(name %in% id2) |> select(name, homeworld, species)
+```
+<br>
+```{r}
+sw1
+sw2
+```
+:::
+
+:::{.column width="60%"}
+
+- keep only the data that is in both data sets
+```{r}
+right_join(sw1, sw2, by = "name")
+```
+<br>
+```{r}
+left_join(sw2, sw1, by = "name")
+```
+
+:::
+
+:::::
+
+
+## Pivoting data sets
+
+::::: columns
+::: {.column .smaller .center width="30%"}
+
+<br>
+
+<img src="https://tidyr.tidyverse.org/logo.png" width="200" alt="Tidyverse logo">
+<!--![](https://tidyr.tidyverse.org/logo.png)-->
+
+
+:::
+
+::: {.column .smaller .center width="70%"}
+
+<br>
+
+Here we are using two verbs reshape a data set
+
+  - pivot_longer()
+  - pivot_wider()
+
+:::
+
+:::::
+
+## pivoting data{.smaller}
+
+Pivoting data refers to reshaping or transforming data sets between long and wide formats. This can be conceptually rather complicated. But once grasped is powerful and often needed to make ggplots. 
+
+::::: columns
+:::{.column width="50%}
+What is wide data?
+
+```{r}
+wide_data = tibble(state = c("TX","LA","MS","AK","FL"),
+                iron_2023 = c(300, 310, 290, 285, 295), 
+                iron_2024 = c(305, 312, 283, 295, 291))
+wide_data
+```
+
+:::
+:::{.column width="50%}
+What is long data?
+
+```{r}
+long_data = tibble(state = c("TX","LA","MS","AK","FL", "TX","LA","MS","AK","FL"),
+                iron = c(300, 310, 290, 285, 295, 305, 312, 283, 295, 291), 
+                year = c( rep(2023, 5), rep(2024, 5) ) )
+long_data
+```
+:::
+:::::
+
+## pivoting data: another example{.smaller}
+
+<br>
+
+::::: columns
+:::{.column width="50%}
+What is wide data?
+
+    - the effect estimate of BMI on your favorite marker given three different models
+
+```{r}
+wide_data = tibble(marker = c("hba1c","hdl","ldl","totcho","crp"),
+                mod0 = rnorm(5, 0.3, 0.01), 
+                mod1 = rnorm(5, 0.25, 0.01), 
+                mod2 = rnorm(5, 0.2, 0.01) )
+wide_data
+```
+
+:::
+:::{.column width="50%}
+What is long data?
+
+```{r}
+long_data = tibble(marker = c("hba1c","hdl","ldl","totcho","crp","hba1c","hdl","ldl","totcho","crp","hba1c","hdl","ldl","totcho","crp"),
+                beta = c(wide_data$mod0,wide_data$mod1,wide_data$mod2), 
+                model = c( rep("mod0", 5), rep("mod1", 5), rep("mod2", 5) ) )
+long_data
+```
+:::
+:::::
+
+## pivot_longer(){.smaller}
+
+    - refresher: what does the wide_data look like?
+```{r}
+wide_data |> slice_head(n = 4)
+```
+<br>
+
+    - So lets pivot the wide tibble into a long format
+```{r}
+wide_data |> pivot_longer(cols = !marker, names_to = "model", values_to = "beta")
+```
+
+## pivot_longer() v2
+<br>
+
+    - Same result as previous slide but different column selection method.
+```{r}
+wide_data |> pivot_longer(cols = starts_with("mod"), names_to = "model", values_to = "beta")
+```
+
+
+## pivot_longer() v3
+<br>
+
+    - Same result as previous slides but yet another column selection method.
+```{r}
+wide_data |> pivot_longer(cols = mod0:mod2, names_to = "model", values_to = "beta")
+```
+
+
+## pivot_wider()
+
+    - refresher: what does the long_data look like?
+```{r}
+long_data |> arrange(marker) |> slice_head(n = 5)
+```
+
+<br>
+
+    - pivot_wider
+```{r}
+long_data |> pivot_wider(names_from = "model", values_from = "beta")
+```
+
+## pivot_wider() another example{.smaller}
+
+      - us_rent_income is another dataset available in R
+```{r}
+us_rent_income |> slice_head(n = 6)
+```
+<br>
+
+
+    - values_from come from two different columns
+```{r}
+us_rent_income |> pivot_wider(names_from = variable, values_from = c(estimate, moe) )
+```
+
+
+
+
+# Practical 4.2
+
+
+  -   [practical 4.2](https://hughesevoanth.github.io/intro_to_r/day4/04_Practical_4.2.html)
+  -   [solutions 4.2](https://hughesevoanth.github.io/intro_to_r/day4/04_Solutions_4.2.html)
+

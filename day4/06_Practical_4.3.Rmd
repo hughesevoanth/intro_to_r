@@ -1,0 +1,112 @@
+---
+title: "Practical 3.2"
+author: "David Hughes"
+date: "2024-10-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+```
+
+## Practical 3.2
+
+In this practical we are going to explore some of the plotting possibilities that ggplot2 provides to us. We are going to use the iris data set that is already available when you start an R session. 
+
+### 1. Load the tidyverse compilation of packages
+
+```{r}
+library(tidyverse)
+```
+
+
+### 2. Replicate the plot at the end of the "An Introduction to ggplot" presentation
+
+```{r}
+iris |> ggplot(aes(x = Sepal.Width, y = Petal.Length)) +
+  geom_point(aes(color = Species), size = 3) +
+  theme_bw() +
+  facet_wrap(.~Species, scales = "free") +
+  geom_smooth(method = "lm", formula = y~x, 
+              color = "black") +
+  labs(x = "sepal width", y = "petal length") +
+  theme(legend.position="bottom") +
+  labs(title = "Sepal width and petal length by species", 
+       subtitle = "some more information")
+```
+
+### 3. Make a boxplot of sepal width by species
+
+- make the figure publication ready, with colors, axis names, title
+
+```{r}
+iris |> ggplot(aes(x = Species, y = Sepal.Width)) +
+  geom_boxplot(aes(fill = Species)) +
+  theme_bw() +
+  theme(legend.position="left") +
+  labs(x = "species", y = "sepal width", title = "distribution of sepal width by species")
+```
+
+### 4. Make a histogram of sepal width by species
+
+- use facet_wrap() to plot by species
+- make the figure publication ready, with colors (hint: fill not color), axis names, title
+
+```{r}
+iris |> ggplot(aes( x = Sepal.Width)) +
+  geom_histogram(aes(fill = Species), bins = 15) +
+  theme_bw() +
+  theme(legend.position="left") +
+  facet_wrap(.~Species) +
+  labs(y = "count", x = "sepal width", title = "distribution of sepal width by species")
+```
+
+
+### 5. Change the Species color of either plot 3 or 2
+
+- one color scheme
+
+```{r}
+iris |> ggplot(aes( x = Sepal.Width)) +
+  geom_histogram(aes(fill = Species), bins = 15) +
+  scale_fill_manual(values = c("black","grey50","grey80")) +
+  theme_bw() +
+  theme(legend.position="left") +
+  facet_wrap(.~Species) +
+  labs(y = "count", x = "sepal width", title = "distribution of sepal width by species")
+```
+- another function to change colors
+
+```{r}
+iris |> ggplot(aes( x = Sepal.Width)) +
+  geom_histogram(aes(fill = Species), bins = 15) +
+  scale_fill_brewer( palette = "Set1" ) +
+  theme_bw() +
+  theme(legend.position="left") +
+  facet_wrap(.~Species) +
+  labs(y = "count", x = "sepal width", title = "distribution of sepal width by species")
+```
+
+
+
+### 6. Make a scatter plot illustrationg the relationship between sepal and petal length
+
+- add a regression line
+- change the color, size, and type of the line 
+- add the regression lines as the first layers 
+
+```{r}
+library(mgcv)
+iris |> ggplot(aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_smooth(method = 'lm', formula = y ~ x, 
+              color = RColorBrewer::brewer.pal(5,"Set1")[5] , 
+              linetype = "solid", se = FALSE) +
+  geom_smooth(method = 'gam', formula = y ~ s(x), color = "black", linetype = 2 ) +
+  geom_point(aes(color = Species), size = 3) +
+  scale_color_brewer(palette = "Set1") +
+  theme_bw() +
+  theme(legend.position="left") +
+  labs(x = "sepal length", y = "petal length", title = "association between sepal and petal length") 
+  
+```
+

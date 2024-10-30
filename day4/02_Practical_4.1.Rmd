@@ -1,0 +1,195 @@
+---
+title: "Practical 4.1"
+author: "David Hughes"
+date: "2024-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = FALSE)
+```
+
+## Practical 4.1
+
+In this practical we are going to apply the data wrangling tools that we learned about from the first lecture of day 4 of the Introduction to R Short Course. Specifically we are going to apply the **verbs** and there helper functions that are built into the **dplyr** R package. 
+
+By the end of this practical, students should be able to:
+
+  1.	filter, select, arrange, and mutate data.
+  2.	Use group_by() and summarize() to create summaries.
+  3.	Chain multiple dplyr operations together using the pipe (|>).
+
+### The data set:
+
+We are going to use in this practical is the **starwars** data set which is loaded automatcially when you load the **dplyr** R package
+
+
+### 1. Load the tidyverse compilation of packages
+
+```{r, echo = TRUE}
+library(tidyverse)
+```
+
+#### What are the variables in the starwars data set and what is the structure of the data?
+
+- NOTE: use an R chunck(s) to inform yourself, I am not looking for an answer here.
+
+```{r}
+dim( starwars ) ## dimensions of the data
+```
+
+```{r}
+str( starwars ) ## structure of the data
+```
+
+```{r}
+head( starwars, n = 5) ## just having a quick look at what the data looks like
+```
+<br><br> 
+### 1. arrange()
+
+#### 1.1 arrange the data set by homeworld
+
+```{r}
+starwars |> arrange(homeworld )
+```
+
+#### 1.2 arrange the data set by homeworld and then name in descending (reverse alphabetical) order 
+
+```{r}
+starwars |> arrange(homeworld, desc(name) )
+```
+<br><br>
+
+### 2. filter()
+
+#### 2.1 filter the data to only include robots, or individuals with "none" sex.
+
+```{r}
+starwars |> filter(sex == "none")
+```
+
+#### 2.2 filter the data to only include males whose height is between 200 and 300 cm. 
+
+```{r}
+starwars |> filter(sex == "male" & between(height, 200, 300))
+```
+#### 2.3 filter the data to only include males whose height is between 200 and 300 cm, AND whose mass is 130 +/- 30
+
+```{r}
+starwars |> filter(sex == "male" & between(height, 200, 300) & near(mass, 130 , tol = 30))
+```
+
+#### 2.4 filter the data to only include individuals how are not missing (is not NA) homeworld and gender data.
+
+```{r}
+starwars |> filter( !is.na(homeworld), !is.na(gender) )
+```
+
+#### 2.5 CHALLENGE!! 
+
+Filter the data to only include individuals that have complete data
+
+  - do not use the na.omit() function
+  - think about using everything() and other helper functions.
+  - I needed to find help with this answer too !!
+
+```{r}
+starwars |> filter( !if_any(everything(), ~is.na(.) ) )
+## the difficult solution here for me was to figure out to place the "!" before if_any() not before is.na()
+```
+
+<br><br> 
+
+### 3. select()
+
+#### 3.1 keep the columns name, homeworld, and species
+
+```{r}
+starwars |> select(name, homeworld, species)
+```
+
+#### 3.2 keep the columns name, homeworld, species, and those that include color in the column name.
+
+```{r}
+starwars |> select(name, homeworld, species, ends_with("_color") )
+```
+
+#### 3.3 keep the columns name, homeworld, species, and those that include color in the column name, but reorder them to place homeworld in the first column, and name in the second. Then arrange by homeworld.
+
+```{r}
+starwars |> select(homeworld, name, species, ends_with("_color") ) |> 
+  arrange(homeworld)
+```
+
+<br><br>
+
+### 4. summarize()
+
+#### 4.1 Estimate the average height and mass across all starwars characters
+
+```{r}
+starwars |> summarize(avg_height = mean(height, na.rm = TRUE), 
+                      avg_mass = mean(mass, na.rm = TRUE) )
+```
+#### 4.2 Estimate the number of observations, the average height, and the average mass across all starwars characters by sex.
+
+```{r}
+starwars |> group_by(sex) |> summarize(
+  n = n(),
+  avg_height = mean(height, na.rm = TRUE), 
+  avg_mass = mean(mass, na.rm = TRUE) 
+  )
+```
+
+#### 4.3 Estimate the number of observations, the average height, and the average mass across all starwars characters by homeworld and sex.
+
+```{r}
+starwars |> group_by(homeworld, sex) |> summarize(
+  n = n(),
+  avg_height = mean(height, na.rm = TRUE), 
+  avg_mass = mean(mass, na.rm = TRUE) 
+  )
+```
+
+<br><br>
+
+### 5. mutate()
+
+#### 5.1 Add a new variable called "tall" to the tibble as a column
+
+"tall" shall be a binary string (tall, not_tall) delineating if a character is taller than 200cm or not.
+
+```{r}
+starwars |> mutate( tall = if_else(height > 200 , "tall", "not_tall" ), .after = name)
+```
+
+#### 5.2 Add a new variable called "height_cat" to the tibble as a column
+
+- "height_cat" shall be a string with three categories 
+
+  - short < 100cm
+  - normal >=100cm & <200cm
+  - tall > 200 cm
+  
+Place the new variable after height column in the tibble.
+
+```{r}
+starwars |> mutate( height_cat = case_when(height >+ 200 ~ "tall", 
+                                     height < 100 ~ "short", 
+                                     TRUE ~ "normal"), .after = height)
+```
+
+
+#### 5.3 extract the columns name, homeworld, and species, order by species, and make all columns to the exclusion of the "name" column a factor.
+
+```{r}
+starwars |> select(name, homeworld, species) |> arrange(species) |> mutate(across(!name, as.factor))
+```
+
+#### 5.4 remove all of the " " (spaces) & "-" (hyphens) in the strings of the "name" column and replace with a "_" (underscore)
+
+```{r}
+starwars |> mutate(name = str_replace_all(name, "[ -]", "_") )
+```
+

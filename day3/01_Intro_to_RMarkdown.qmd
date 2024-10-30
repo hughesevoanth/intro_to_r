@@ -6,7 +6,7 @@ format:
     slide-number: true
     aspect-ratio: 16:9
     theme: [default, ../css/custom_white.scss]
-    footer: "A review of day 1"
+    footer: "An Introduction to RMarkdown"
     logo: "../images/pb_purple.png"
     scrollable: true
     chalkboard: true
@@ -22,22 +22,21 @@ library(tidyverse)
 
 ## What is RMarkdown?
 
-<div style="text-align: center;">
-![](../images/rmarkdown.png){width=20%}
-</div>
+::: {style="text-align: center;"}
+![](../images/rmarkdown.png){width="20%"}
+:::
 
+-   [RMarkdown](https://rmarkdown.rstudio.com/) is a file format and a scripting and author framework to run analyses and generate reports for your analyses.
 
-- [RMarkdown](https://rmarkdown.rstudio.com/) is a file format and a scripting and author framework to run analyses and generate reports for your analyses. 
+-   It is a powerful tool for integrating code, results, and narrative into a single, reproducible document.
 
-- It is a powerful tool for integrating code, results, and narrative into a single, reproducible document.
-
-- You can find more about RMarkdown [here](https://rmarkdown.rstudio.com/) and [here](https://bookdown.org/yihui/rmarkdown/).
-
+-   You can find more about RMarkdown [here](https://rmarkdown.rstudio.com/) and [here](https://bookdown.org/yihui/rmarkdown/).
 
 ## What is RMarkdown? cont'd
-:::::: columns
-:::{.column .smaller .center width="50%"}
-- You can generate
+
+::::: columns
+::: {.column .smaller .center width="50%"}
+-   You can generate
 
     -   html
     -   pdf
@@ -49,27 +48,26 @@ library(tidyverse)
     -   articles
     -   websites
 :::
-:::{.column .smaller .center width="50%"}
 
-- It is **interactive**
-  
-  In one place you have:
-  - code
-  - results
-  - annotation and comments
+::: {.column .smaller .center width="50%"}
+-   It is **interactive**
 
+    In one place you have:
 
-- Allows for **Reproducability**
-  - It makes it easy to create reproducible workflows.
+    -   code
+    -   results
+    -   annotation and comments
+
+-   Allows for **Reproducability**
+
+    -   It makes it easy to create reproducible workflows.
 :::
-
-::::::
+:::::
 
 ## RMarkdown files "\*.Rmd"
 
 :::::: columns
-
-:::{.column .smaller width="40%"}
+::: {.column .smaller width="40%"}
 Contains three things:
 
 <br><br>
@@ -77,139 +75,123 @@ Contains three things:
 -   YAML (yet another markup lang.) metadata
 -   Text
 -   Code chunks
-
-:::
-:::{.column width="60%"}
-
-:::{.center}
-![](../images/NewRmd_step3.png){width=120%}
 :::
 
+:::: {.column width="60%"}
+::: center
+![](../images/NewRmd_step3.png){width="120%"}
 :::
+::::
+::::::
 
-:::::
-
-
-## What is Markdown?{.smaller}
+## What is Markdown? {.smaller}
 
 [Markdown](https://www.markdownguide.org) is a markup language with plain text formatting that can be converted into HTML, PDF, Word, or other document formats. It uses a simple syntax to create headers, lists, tables, links, and more.
 
-:::::: columns
-
-:::{.column width=50%}
-![](../images/Markdown1.png){width=80%}
+::::: columns
+::: {.column width="50%"}
+![](../images/Markdown1.png){width="80%"}
 :::
 
-:::{.column width=50%}
-
-![](../images/Markdown2.png){width=80%}
-
+::: {.column width="50%"}
+![](../images/Markdown2.png){width="80%"}
 :::
-
-::::::
-
+:::::
 
 ## Mardown editors
 
-  - Rstudio
-  - Visual Studio
-  - [MacDown](https://macdown.uranusjr.com) (Mac)
-  - [ghostwriter](https://kde.github.io/ghostwriter/) (Windows)
-  - [Markdown Monster](https://markdownmonster.west-wind.com) (Windows)
-  
+-   Rstudio
+-   Visual Studio
+-   [MacDown](https://macdown.uranusjr.com) (Mac)
+-   [ghostwriter](https://kde.github.io/ghostwriter/) (Windows)
+-   [Markdown Monster](https://markdownmonster.west-wind.com) (Windows)
+
 ## To start a new RMarkdown file
 
-```
+```         
 File > New File > R Markdown
 ```
 
 ![](../images/NewRmd_step1.png)
 
+## To start a new RMarkdown file cont'd 1 {.smaller}
 
-## To start a new RMarkdown file cont'd 1{.smaller}
-
-:::::: columns
-
-:::{.column width=20%}
-
+::::: columns
+::: {.column width="20%"}
 <br>
 
 You can make Documents, Presentations, or a Shiny app. We will continue with "Document".
 :::
 
-:::{.column width=80%}
-```
+::: {.column width="80%"}
+```         
 Give your document a title and chose the output format as HTML.
 ```
 
-![](../images/NewRmd_step2.png){width=80%}
+![](../images/NewRmd_step2.png){width="80%"}
 :::
+:::::
 
-::::::
+## To start a new RMarkdown file cont'd 2 {.smaller}
 
-
-
-## To start a new RMarkdown file cont'd 2{.smaller}
-
-:::::: columns
-:::{.column width=80%}
-```
+::::: columns
+::: {.column width="80%"}
+```         
 The new R Markdown file starts you off with some examples of how to use it. 
 ```
 
-![](../images/NewRmd_step3.png){width=80%}
+![](../images/NewRmd_step3.png){width="80%"}
 :::
-:::{.column width=20%}
 
+::: {.column width="20%"}
 <br><br>
 
-- Let us "Knit" this file to render it. 
+-   Let us "Knit" this file to render it.
 :::
-::::::
+:::::
 
-
-## To start a new RMarkdown file cont'd 3{.smaller}
+## To start a new RMarkdown file cont'd 3 {.smaller}
 
 You can now see the rendered file
-<div style="text-align: center;">
-![](../images/NewRmd_step4.png){width=80%}
-</div>
+
+::: {style="text-align: center;"}
+![](../images/NewRmd_step4.png){width="80%"}
+:::
 
 ## Reviewing the elements of the RMarkdown file
 
-<div style="text-align: center;">
-<img src="../images/NewRmd_step3a.png" style="width: 60%;" />
-</div>
-
+::: {style="text-align: center;"}
+<img src="../images/NewRmd_step3a.png" style="width: 60%;"/>
+:::
 
 # Practical 3.1
 
-## Let's practice !{.smaller2}
+## Let's practice ! {.smaller2}
 
-- We are going to work with the iris data set. 
-It is already available when you start R.
+-   We are going to work with the iris data set. It is already available when you start R.
 
-- Start a new Rmarkdown file
-- Title it: **"My First RMarkdown File"**
-- We want to render to HTML
-- Describe what you will be doing in this "report". Think about the good coding practices we previously discussed. 
-- In your first code chunk ( [Cmd+Option+I] on a Mac) *head()* the iris data set.
-- In your second code chunk: use the *apply()* function to estimate the *mean()* of the numeric columns.
-- Make a scatter **plot**, illustrating the relationship between *Sepal.Width* and *Petal.Length*. Color each observation by *Species*
-- Save your file
-- Render your document by clicking on "Knit".
+-   Start a new Rmarkdown file
+
+-   Title it: **"My First RMarkdown File"**
+
+-   We want to render to HTML
+
+-   Describe what you will be doing in this "report". Think about the good coding practices we previously discussed.
+
+-   In your first code chunk ( \[Cmd+Option+I\] on a Mac) *head()* the iris data set.
+
+-   In your second code chunk: use the *apply()* function to estimate the *mean()* of the numeric columns.
+
+-   Make a scatter **plot**, illustrating the relationship between *Sepal.Width* and *Petal.Length*. Color each observation by *Species*
+
+-   Save your file
+
+-   Render your document by clicking on "Knit".
 
 ## What should our exercise look like?
 
 My Rmarkdown file, for this exercise, is below and [here](https://github.com/hughesevoanth/intro_to_r/blob/main/day3/My_First_RMarkdown.Rmd).
 
-<div style="text-align: center;">
-![](../images/MyFirstRMarkdown.png){width=75%}
-</div>
-
-
-
-
-
-
-
+::: {style="text-align: center;"}
+![](../images/MyFirstRMarkdown.png){width="75%"}
+:::

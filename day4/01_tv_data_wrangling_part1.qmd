@@ -1,0 +1,561 @@
+---
+title: "An Introduction to data wrangling (pt1)"
+author: "David A Hughes"
+format: 
+  revealjs:
+    slide-number: true
+    aspect-ratio: 16:9
+    theme: [default, ../css/custom_white.scss]
+    footer: "An Introduction to data wrangling (pt1)"
+    logo: "../images/pb_purple.png"
+    scrollable: true
+    chalkboard: true
+    incremental: false 
+    code-line-numbers: false
+editor: visual
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## What is data wrangling?
+
+-   Data wrangling (munging) is a broad term that refers to data:
+    -   cleaning
+    -   transformation
+    -   *filtering & subsetting*
+    -   *merging*
+    -   *reshaping*
+-   We are going to focus on the latter three today using the dply and tidyr packages.
+
+## A quick review of what the tidyverse is.
+
+::::: columns
+::: {.column .smaller .center width="50%"}
+<br>
+
+-   The tidyverse is a collection of R packages
+-   The purpose or philosophy of the tidyverse is to
+    -   create a cohesive and consistent ecosystem for data science in R
+:::
+
+::: {.column .smaller .center width="50%"}
+<br>
+
+-   Key principals of the tidyverse
+    -   organized or "tidy" data
+    -   consistent syntax
+    -   the use of pipelines
+    -   *functional programing*
+    -   desined for usability
+    -   modularity (each paakge does one thing)
+:::
+:::::
+
+## An intro to dplyr
+
+Your [go to](https://dplyr.tidyverse.org) data manipulation package.
+
+::::: columns
+
+::: {.column .center width="30%"}
+![](https://dplyr.tidyverse.org/logo.png)
+:::
+
+:::{.column .center width="70%"}
+-   It contains five key functions or "*verbs*" (**actions** performed on the data).
+
+    -   arrange()
+    -   filter()
+    -   select()
+    -   summarize()
+    -   mutate()
+
+:::
+
+:::::
+
+
+## Introducing arrange()
+
+The **arrange()** verb provides a frameworks to sort the rows of your data by specific columns.
+
+<br>
+
+```{r}
+## format mtcars slightly 
+## TRY TO IGNORE THIS FOR NOW !!
+mtcars = tibble(mtcars) |> mutate(car = rownames(mtcars), .before = mpg)
+```
+
+```{r}
+## What does the mtcars data set look like?
+mtcars
+```
+
+## arrange() applying the arrange() verb to your data
+
+<br>
+
+-   arrange() by mpg.
+
+```{r}
+## arrange the mtcars data set by the mpg for each car.
+mtcars |> arrange(mpg)
+```
+
+## arrange() with the helper function desc()
+
+<br>
+
+-   arrange() in descending order by mpg.
+
+```{r}
+## arrange by mpg in descending order
+mtcars |> arrange( desc(mpg) )
+```
+
+## arrange() by data in multiple columns
+
+<br>
+
+-   arrange() by number of carburetors, number of cylinder, and then mpg in descending order
+    -   in that order: carb, cyl, mpg
+
+```{r}
+## arrange by number of carburetors, number of cylinder, and then mpg in descending order
+mtcars |> arrange( carb, cyl,  desc(mpg))
+```
+
+## Introducing filter()
+
+<br>
+
+The **filter()** verb filters a data set given a column of data and filtering parameters.
+
+```{r}
+## What does the mtcars data set look like?
+mtcars |> filter(mpg > 30)
+```
+
+## filter() relys on logical operators and helper functions.
+
+::::: columns
+::: {.column .center width="50%"}
+-   logical operators
+
+    -   \>
+    -   \<
+    -   \>=\
+    -   \<=
+    -   &
+    -   \|
+    -   !
+    -   %in%
+
+[*Note: None of these are unique to tidyverse.*]{style="color: #CBCBCB; font-size: 22.5px;"}
+:::
+
+::: {.column .center width="50%"}
+-   helper functions
+
+    -   is.na()
+    -   !is.na()
+    -   between()
+    -   near()
+    -   if_any()
+    -   if_all()
+:::
+:::::
+
+## filter(): in combination with logical operators
+
+<br>
+
+-   single logical
+
+```{r}
+mtcars |> filter(cyl == 6 )
+```
+
+## filter(): in combination with compound logical operators
+
+<br>
+
+-   compound logicals
+
+```{r}
+mtcars |> filter(cyl > 6 & disp < 350 )
+```
+
+## filter(): using the between() helper function
+
+<br>
+
+-   between finds all observations that sit between two defined values
+
+```{r}
+mtcars |> filter( between(mpg, 10, 15) )
+```
+
+## filter(): using the near() helper function
+
+<br>
+
+-   near() finds all observations that are numerically close to a float.
+    -   there is a tol or tolerance parameter.
+
+```{r}
+mtcars |> filter( near(mpg, 15, tol = 0.5) )
+```
+
+## filter(): in combination with the (!)is.na() base R function
+
+<br>
+
+-   return a data set where a column has complete or no data
+
+```{r}
+mtcars |> filter( is.na(mpg) )
+mtcars |> filter( !is.na(mpg) )
+```
+
+## filter(): in combination with the %in% *(within)* logical
+
+<br>
+
+```{r}
+mtcars |> filter(car %in% c("Honda Civic","Toyota Corolla", "Toyota Corona"))
+```
+
+## filter(): in combination with the grepl() base R function
+
+<br>
+
+```{r}
+mtcars |> filter( grepl("Fiat", car) )
+```
+
+-   ! NOT
+
+```{r}
+mtcars |> filter( !grepl("Fiat", car) )
+```
+
+## filter(): using the if_any() helper function
+
+-   if_any() asks a logical query where the row of data is returned if ANY of the queried columns is TRUE.
+
+```{r}
+mtcars |> filter( if_any( c(cyl, gear ), ~ . == 4  ) )
+```
+
+```         
+- this include a lambda equation that is functionally equivalent to 
+```
+
+``` r
+mtcars |> filter( if_any( c(cyl, gear ), function(x){ x == 4 }  ) )
+```
+
+## filter(): using the if_all() helper function
+
+-   if_all() asks a logical query where the row of data is returned if ALL of the queried columns is TRUE.
+
+```{r}
+mtcars |> filter( if_all( c(cyl, gear ), ~ . == 4  ) )
+```
+
+## Introducing select()
+
+<br>
+
+The **select()** verb extracts specific columns from a tibble.
+
+```{r}
+mtcars |> select(car, mpg, cyl)
+```
+
+## select() has a variety of helper functions
+
+<br>
+
+-   **select()** helper functions includes:
+
+    -   starts_with()
+    -   ends_with()
+    -   contains()
+    -   matches()
+    -   num_range()
+    -   everything()
+
+<br> [*NOTE: each helper function revolves around selecting column names.*]{style="color: #CBCBCB;"}
+
+## select(): using the starts_with() helper function
+
+<br>
+
+-   select() the Sepal columns from the iris data set
+
+```{r}
+tibble(iris) |> select(starts_with("Sepal"))
+```
+
+## select(): using the ends_with() helper function
+
+<br>
+
+-   select() the Width columns from the iris data set
+
+```{r}
+tibble(iris) |> select(ends_with("Width"))
+```
+
+## select(): using the contains() helper function
+
+<br>
+
+-   **select()** the columns from the iris data set with a "."
+
+```{r}
+tibble(iris) |> select(contains("."))
+```
+
+## select(): using the everything() helper function
+
+<br>
+
+-   Reorder the iris data set columns to put "Species" first
+
+```{r}
+tibble(iris) |> select(Species, everything())
+```
+
+## Introduction pull()
+
+The pull() verb is similar to select but we are extracting a single column of data as a **vector**
+
+```{r}
+tibble(iris) |> pull(Species)
+```
+
+
+## Introducing summarize()
+
+<br>
+
+The summarize() verb is used to produce descriptive statistics across your data set.
+
+```{r}
+mtcars |> summarise(avg_mpg = mean(mpg))
+```
+
+<br>
+
+```{r}
+mtcars |> summarise(count = n(), avg_mpg = mean(mpg), 
+                    min_mpg = min(mpg), 
+                    max_mpg = max(mpg))
+```
+
+## summarize(): using the across() helper funciton {.smaller}
+
+-   estimate a descriptive statistic across numerous columns
+
+simple syntax
+
+```{r}
+tibble(iris) |> summarize( across( Sepal.Length:Petal.Width , mean) )
+```
+
+familiar syntax given other lectures
+
+```{r}
+tibble(iris) |> summarize( across( Sepal.Length:Petal.Width, function(x){mean(x, na.rm = TRUE)} ) )
+```
+
+prefered syntax
+
+```{r}
+tibble(iris) |> summarize( across( Sepal.Length:Petal.Width, \(x) mean(x, na.rm = TRUE) ) )
+```
+
+## summarize(): using across() and starts_with() helper functions
+
+<br>
+
+```{r}
+tibble(iris) |> summarize( across( starts_with("Petal"), \(x) mean(x, na.rm = TRUE) ) )
+```
+
+<br>
+
+```{r}
+tibble(iris) |> summarize( across( ends_with("Width"), mean ) )
+```
+
+## summarize(): using the group_by() verb
+
+<br>
+
+This is where the **summarize()** verb gets powerful
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarize( count = n(), 
+             min = min(mpg),
+             max = max(mpg), 
+             avg = mean(mpg) )
+```
+
+## Introducing mutate()
+
+<br>
+
+The mutate() verb adds new columns to a tibble that are functions of existing variables.
+
+```{r}
+tibble(iris) |> mutate(Petal.Area = Petal.Width * Petal.Length)
+```
+
+## mutate(): new column placement with .before
+
+<br>
+
+Use .before to add the column before Species
+
+```{r}
+tibble(iris) |> mutate(Petal.Area = Petal.Width * Petal.Length, .before = Species)
+```
+
+## mutate(): new column placement with .after
+
+<br>
+
+Use .after to add the column before Petal.Width
+
+```{r}
+tibble(iris) |> mutate(Petal.Area = Petal.Width * Petal.Length, .after = Petal.Width)
+```
+
+[*NOTE: the result is the same as the previous slide.*]{style="color: #CBCBCB;"}
+
+## mutate(): altering what columns are retained with .keep
+
+Use .keep to modify which columns are retained after running mutate.
+
+-   "all", "used", "unused"
+
+```{r}
+tibble(iris) |> mutate(Petal.Area = Petal.Width * Petal.Length, .after = Petal.Width, 
+                       .keep = "used") |> slice_head(n = 3)
+```
+
+```{r}
+tibble(iris) |> mutate(Petal.Area = Petal.Width * Petal.Length, .after = Petal.Width, 
+                       .keep = "unused") |> slice_head(n = 3)
+```
+
+## mutate(): using the across() helper function
+
+<br>
+
+-   really great for data transformations
+
+```{r}
+tibble(iris) |> mutate( across( !Species , scale ) ) |> slice_head(n = 3)
+```
+
+<br>
+
+```{r}
+tibble(iris) |> mutate( across( starts_with("Petal") , scale ) ) |> slice_head(n = 3)
+```
+
+## mutate(): using the if_else() helper function
+
+<br>
+
+```{r}
+tibble(iris) |> mutate( new.petal.width = if_else(Species != "virginica", 
+                                                  Petal.Width + 10, 
+                                                  Petal.Width),
+                        .before = Species)
+```
+
+## mutate(): using the case_when() helper function
+
+<br>
+
+-   great for multiple conditions that if_else() can not handle
+
+```{r}
+temp = tibble(iris) |> mutate(new.petal.width = case_when(
+  Species == "setosa" ~ Petal.Width + 10,
+  Species == "versicolor" ~ Petal.Width + 100,
+  TRUE ~ Petal.Width),
+  .before = "Species")
+##
+temp |> group_by(Species) |> summarize(mean_petal_width = mean(Petal.Width),
+                                       mean_new_petal_width = mean(new.petal.width))
+```
+
+## mutate(): in combination with functions from the stringr package
+
+-   str_to_upper()
+-   str_to_lower()
+
+```{r}
+(x = mtcars |> mutate(car = str_to_upper(car))  |> slice_head(n = 3))
+```
+
+<br>
+
+```{r}
+x |> mutate(car = str_to_lower(car))  |> slice_head(n = 3) 
+```
+
+## mutate(): in combination with functions from the stringr package
+
+-   str_replace()
+
+```{r}
+tibble(mtcars) |> mutate(car = str_replace(car, " ", "_")) |>
+  slice_head(n = 3)
+```
+
+<br>
+
+```{r}
+tibble(mtcars) |> mutate(car = str_replace_all(car, " ", "_")) |>
+  slice_head(n = 3)
+```
+
+<br>
+
+```{r}
+tibble(mtcars) |> mutate(car = str_replace_all(car, "[ zXW]", "_")) |>
+  slice_head(n = 3)
+```
+
+## mutate(): in combination with functions from the stringr package
+
+-   str_remove()
+
+```{r}
+tibble(mtcars) |> mutate(car = str_remove(car, " ")) |>
+  slice_head(n = 3)
+```
+
+```{r}
+tibble(mtcars) |> mutate(car = str_remove_all(car, " ")) |>
+  slice_head(n = 3)
+```
+
+# Practical 4.1
+
+  -   [practical 4.1](https://hughesevoanth.github.io/intro_to_r/day4/02_Practical_4.1.html)
+  -   [solutions 4.1](https://hughesevoanth.github.io/intro_to_r/day4/02_Solutions_4.1.html)
